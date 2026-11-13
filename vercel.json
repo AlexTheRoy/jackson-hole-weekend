@@ -1,0 +1,5 @@
+{
+  "headers": [
+    { "source": "/(maps|t3d)/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=86400" } ] }
+  ]
+}
