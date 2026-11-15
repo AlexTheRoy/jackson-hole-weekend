@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coeur d’Alene Guys Weekend</title>
+<meta name="description" content="A four-day Coeur d’Alene plan: a summit or alpine-lake hike, Clark Fork whitewater, lake time, dinners, maps and a live budget.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Coeur d’Alene Guys Weekend">
+<meta property="og:description" content="Hikes, Clark Fork whitewater, lake time, dinners, maps and a live budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Lake-country palette: pine, lake water, granite, sunrise orange. Sticky map left, plan right; budget and logistics below. */
+  --bg:#e9eeeb; --surface:#ffffff; --surface-2:#f3f6f4; --ink:#17231f; --muted:#56665f; --line:#d3dcd8;
+  --pine:#1d4a3c; --glacier:#1f7f8b; --accent:#d4511b; --accent-ink:#ffffff; --road:#4b5753; --halo:rgba(255,255,255,.85);
+  --good:#2f8a4f; --warn:#c08510; --bad:#b84a3a;
+  --font-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --font-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1513; --surface:#16211e; --surface-2:#1c2a26; --ink:#e4ebe8; --muted:#97a8a1; --line:#2b3a35;
+    --pine:#7cc2a6; --glacier:#5ec1cb; --accent:#ff7a3d; --accent-ink:#1a0d06; --road:#c7d0cc; --halo:rgba(10,16,14,.85);
+    --good:#5cc27f; --warn:#e2b04a; --bad:#e07a68; color-scheme:dark;
+  }
+  :root:not([data-theme="light"]){--g1:#5fd09a;--g2:#f0bd4d;--g3:#ff7a5c}
+  :root:not([data-theme="light"]) .img-light{display:none}
+  :root:not([data-theme="light"]) .img-dark{display:inline}
+}
+:root[data-theme="dark"]{
+  --bg:#0e1513; --surface:#16211e; --surface-2:#1c2a26; --ink:#e4ebe8; --muted:#97a8a1; --line:#2b3a35;
+  --pine:#7cc2a6; --glacier:#5ec1cb; --accent:#ff7a3d; --accent-ink:#1a0d06; --road:#c7d0cc; --halo:rgba(10,16,14,.85);
+  --good:#5cc27f; --warn:#e2b04a; --bad:#e07a68; color-scheme:dark;
+}
+.img-dark{display:none}
+:root[data-theme="dark"]{--g1:#5fd09a;--g2:#f0bd4d;--g3:#ff7a5c}
+:root[data-theme="dark"] .img-light{display:none}
+:root[data-theme="dark"] .img-dark{display:inline}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.5}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:30px;font-weight:800;text-transform:uppercase}
+h3{font-size:21px;font-weight:800;text-transform:uppercase}
+p{margin:0}
+a{color:var(--glacier)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1260px;margin:0 auto;padding:0 20px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+
+header{background:var(--pine);color:#f2f5f3;padding:28px 0 26px}
+:root[data-theme="dark"] header{color:#0e1513}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header{color:#0e1513}}
+.head{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between}
+.sign{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-family:var(--font-display);font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.sign h1{font-size:clamp(40px,7vw,72px);font-weight:900;line-height:.92;text-transform:uppercase}
+.sign p{max-width:56ch;opacity:.92}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:2px solid currentColor;border-radius:10px;padding:8px 14px;display:flex;flex-direction:column;min-width:96px}
+.chip b{font-family:var(--font-display);font-size:30px;line-height:1;font-weight:800;font-variant-numeric:tabular-nums}
+.chip span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;opacity:.9}
+
+main{padding:24px 0 48px;display:flex;flex-direction:column;gap:28px}
+.grid{display:grid;grid-template-columns:minmax(320px,470px) 1fr;gap:24px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.mapcard{position:sticky;top:12px;padding:12px}
+@media (max-width:900px){.mapcard{position:static}}
+@media (max-width:480px){.mapcard .seg button{padding:6px 7px;font-size:12px;letter-spacing:.02em}}
+.maptop{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:2px 4px 10px;flex-wrap:wrap}
+.seg{display:inline-flex;border:2px solid var(--line);border-radius:10px;overflow:hidden}
+.seg{max-width:100%;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:6px 11px;font-size:13px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.05em}
+.seg button[aria-pressed="true"]{background:var(--pine);color:var(--surface)}
+.mapbox{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2)}
+#map{display:block;width:100%;height:auto;max-height:78vh}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);padding:10px 4px 0}
+.legend i{display:inline-block;width:16px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.credit{font-size:11px;color:var(--muted);padding:6px 4px 0}
+.pop{position:absolute;left:10px;right:10px;bottom:10px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);border-radius:10px;padding:12px 40px 12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+.pop.show{display:block}
+.pop h4{margin:0 0 2px;font-family:var(--font-display);font-size:20px;text-transform:uppercase}
+.pop p{font-size:14px;color:var(--muted)}
+.pop button{position:absolute;top:6px;right:6px;border:0;background:transparent;font-size:20px;cursor:pointer;width:30px;height:30px;color:var(--muted)}
+
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tab{border:2px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:2px}
+.tab:hover{border-color:var(--glacier)}
+.tab b{font-family:var(--font-display);font-size:24px;font-weight:800;line-height:1;text-transform:uppercase}
+.tab span{font-size:13px;color:var(--muted)}
+.tab[aria-selected="true"]{border-color:var(--accent);background:var(--surface-2)}
+.tab[aria-selected="true"] b{color:var(--accent)}
+@media (max-width:520px){.tabs{grid-template-columns:repeat(2,1fr)}}
+.daytitle{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px;margin:18px 0 6px}
+.daytitle h2{font-size:34px}
+.callout{display:flex;gap:10px;align-items:flex-start;background:var(--surface-2);border-left:4px solid var(--warn);border-radius:8px;padding:10px 12px;font-size:14px;margin:8px 0 6px}
+.callout b{white-space:nowrap}
+.timeline{list-style:none;margin:8px 0 0;padding:0}
+.ev{display:grid;grid-template-columns:78px 30px 1fr;gap:0 10px;align-items:start}
+.ev .t{font-weight:700;font-size:14px;padding-top:9px;text-align:right;font-variant-numeric:tabular-nums}
+.ev .rail{position:relative;height:100%;min-height:44px}
+.ev .rail::before{content:"";position:absolute;left:14px;top:0;bottom:0;width:2px;background:var(--line)}
+.ev:first-child .rail::before{top:16px}
+.ev:last-child .rail::before{bottom:calc(100% - 16px)}
+.dot{position:absolute;left:4px;top:7px;width:22px;height:22px;border-radius:50%;background:var(--surface);border:2px solid var(--muted);display:grid;place-items:center;font-size:11px;font-weight:800;font-family:var(--font-display)}
+.ev.pin .dot{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-size:13px;cursor:pointer}
+.ev .body{padding:6px 0 12px}
+.ev .name{font-weight:700}
+.ev .blurb{color:var(--muted);font-size:14.5px;max-width:64ch}
+.ev.drive .t{color:var(--muted);font-weight:500}
+.ev.drive .dot{border-style:dashed;width:18px;height:18px;left:6px;top:9px}
+.ev.drive .body{padding:6px 0 8px}
+.ev.drive .name{font-weight:600;color:var(--muted);font-size:14px}
+.cost{display:inline-block;margin-left:6px;font-size:12px;font-weight:700;color:var(--pine);background:var(--surface-2);border:1px solid var(--line);border-radius:20px;padding:1px 8px;vertical-align:1px}
+
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.opt{border:2px solid var(--line);border-radius:12px;background:var(--surface-2);padding:12px;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.opt:hover{border-color:var(--glacier)}
+.opt[aria-pressed="true"]{border-color:var(--accent);background:var(--surface)}
+.opt .t{font-weight:700}
+.opt .s{font-size:13px;color:var(--muted)}
+.meter{display:flex;gap:3px}
+.meter i{width:16px;height:6px;border-radius:3px;background:var(--line)}
+.meter i.on{background:var(--accent)}
+.section-h{display:flex;align-items:center;gap:10px;margin-bottom:4px;flex-wrap:wrap}
+.tag{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.08em;background:var(--glacier);color:var(--surface);padding:3px 8px;border-radius:20px}
+.lede{color:var(--muted);font-size:14px;margin:4px 0 12px;max-width:70ch}
+.detail{margin-top:14px;background:var(--surface-2);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.stats{display:flex;gap:22px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--font-display);font-size:28px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+#profile{width:100%;height:auto;display:block}
+.dinners{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.night h4{margin:0 0 6px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:2px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer;font-weight:600}
+.pill small{font-weight:500;color:var(--muted)}
+.pill[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:var(--surface)}
+.pill[aria-pressed="true"] small{color:inherit;opacity:.8}
+
+/* Budget */
+.budget{display:grid;grid-template-columns:minmax(280px,1fr) minmax(300px,1.2fr);gap:24px}
+@media (max-width:900px){.budget{grid-template-columns:1fr}}
+.field{display:grid;grid-template-columns:1fr 132px;gap:4px 12px;align-items:center;padding:9px 0;border-top:1px dashed var(--line)}
+.field:first-of-type{border-top:0}
+.field label{font-weight:600;font-size:15px}
+.field .hint{grid-column:1 / -1;font-size:12.5px;color:var(--muted)}
+.field input[type=number]{width:100%;padding:7px 10px;border:2px solid var(--line);border-radius:8px;background:var(--surface-2);text-align:right;font-variant-numeric:tabular-nums}
+.stepper{display:flex;align-items:center;justify-content:flex-end;gap:6px}
+.stepper button{width:34px;height:34px;border-radius:8px;border:2px solid var(--line);background:var(--surface-2);font-weight:800;cursor:pointer}
+.stepper output{min-width:28px;text-align:center;font-family:var(--font-display);font-size:24px;font-weight:800}
+.total{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline}
+.total .big{font-family:var(--font-display);font-size:64px;font-weight:900;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.bar{display:flex;height:18px;border-radius:6px;overflow:hidden;margin:14px 0 8px;background:var(--line)}
+.bar div{height:100%}
+.lines{width:100%;border-collapse:collapse;font-size:14px}
+.lines td{padding:7px 0;border-top:1px solid var(--line);vertical-align:top}
+.lines td:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;padding-left:12px}
+.lines .sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:0}
+.lines .basis{display:block;font-size:12px;color:var(--muted);font-weight:400}
+
+/* Logistics */
+.lower{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+@media (max-width:960px){.lower{grid-template-columns:minmax(0,1fr)}}
+.book{list-style:none;padding:0;margin:14px 0 0;display:flex;flex-direction:column;gap:0}
+.book li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.book li:first-child{border-top:0}
+.when{font-family:var(--font-display);font-weight:800;font-size:18px;text-transform:uppercase;color:var(--glacier);line-height:1.1}
+.book label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:15px}
+.book input{width:18px;height:18px;accent-color:var(--accent);margin-top:3px;flex:none}
+.book input:checked + span{text-decoration:line-through;color:var(--muted)}
+.facts{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.facts th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 0;border-bottom:2px solid var(--line)}
+.facts td{padding:8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.facts td:last-child{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;padding-left:10px}
+.season{display:grid;grid-template-columns:minmax(0,100px) repeat(6,minmax(0,1fr));gap:4px;margin-top:14px;font-size:13px}
+.season .lab{font-weight:700;display:flex;align-items:center}
+.season .m{text-align:center;font-weight:700;color:var(--muted);font-size:12px;text-transform:uppercase}
+.cell{height:32px;border-radius:6px;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
+.c3{background:var(--good)} .c2{background:var(--warn)} .c1{background:var(--bad)} .c0{background:var(--line);color:var(--muted)}
+.keyrow{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+.keyrow i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
+.checklist{list-style:none;padding:0;margin:12px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:4px 16px}
+.checklist label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;padding:5px 0;font-size:15px}
+.checklist input{width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex:none}
+.checklist input:checked + span{text-decoration:line-through;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.btn{border:0;background:var(--accent);color:var(--accent-ink);font-weight:700;padding:12px 18px;border-radius:10px;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.toast{font-size:14px;color:var(--good);font-weight:600}
+#fallback{display:none;width:100%;min-height:180px;margin-top:10px;border-radius:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);padding:10px;font:13px/1.5 ui-monospace,Menlo,monospace}
+.sources{columns:2 320px;font-size:13px;color:var(--muted);padding-left:18px;margin:10px 0 0}
+.sources li{margin-bottom:4px;break-inside:avoid}
+footer{color:var(--muted);font-size:13px;padding:0 0 40px}
+/* Trail detail */
+:root{--g1:#2f9e6f;--g2:#d99a1b;--g3:#d8452a}
+.gkey{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted)}
+.gkey i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.pacebar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:6px}
+.pacebar b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.wp{width:100%;border-collapse:collapse;font-size:14px}
+.wp th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 8px 6px 0;border-bottom:2px solid var(--line)}
+.wp td{padding:8px 8px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.wp td.n{font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
+.wp tr.row{cursor:pointer}
+.wp tr.row:hover td,.wp tr.row:focus td{background:var(--surface)}
+.wp .note{display:block;color:var(--muted);font-size:13px}
+.wp td.eta{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;padding-right:0;font-weight:700;color:var(--glacier)}
+.wp .el2{display:none;font-weight:500;color:var(--muted);font-size:12px}
+@media (max-width:560px){.wp th:nth-child(2),.wp td:nth-child(2){display:none}.wp .el2{display:block}.wp td{padding-right:10px}}
+.turn{font-size:13.5px;padding:8px 12px;border-radius:8px;background:var(--surface);border-left:4px solid var(--good)}
+.turn.late{border-left-color:var(--bad)}
+.tchip{display:inline-block;margin-left:6px;font-size:12px;font-weight:600;color:var(--muted);border:1px dashed var(--line);border-radius:20px;padding:1px 8px;vertical-align:1px}
+.know{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:14px}
+.know div{background:var(--surface-2);border-radius:10px;padding:10px 12px;font-size:14px}
+.know b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--glacier);margin-bottom:2px}
+.rapids{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.rapids li{display:grid;grid-template-columns:30px 1fr;gap:10px;background:var(--surface-2);border-radius:10px;padding:10px 12px;font-size:14px}
+.rapids .no{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:13px}
+.rapids li.calm .no{background:var(--glacier)}
+.rapids b{display:block}
+.rapids .cls{font-size:12px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
+.flow{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.flow td{padding:7px 10px 7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.flow td:first-child{font-weight:700;white-space:nowrap}
+/* 3D terrain */
+.t3wrap{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);height:clamp(360px,54vw,620px);background:#9dc4e6 url(t3d/poster.jpg) center/cover no-repeat;touch-action:pan-y}
+#t3{display:block;width:100%;height:100%;cursor:grab;opacity:0}
+.t3live #t3{opacity:1}
+.t3hud{position:absolute;pointer-events:none;background:rgba(12,20,18,.62);color:#fff;font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px}
+#t3time{left:12px;top:12px;max-width:calc(100% - 80px)}
+.t3still #t3msg{top:auto;bottom:12px;transform:translateX(-50%);width:max-content}
+#t3read{left:12px;bottom:12px;font-variant-numeric:tabular-nums}
+#t3msg{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:80%}
+.t3compass{position:absolute;right:12px;top:12px;width:44px;height:44px;border-radius:50%;background:rgba(12,20,18,.62);display:grid;place-items:center;pointer-events:none}
+.t3compass svg{width:30px;height:30px}
+.t3zoom{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;gap:6px}
+.t3zoom button{width:38px;height:38px;border-radius:9px;border:0;background:rgba(12,20,18,.62);color:#fff;font-size:22px;font-weight:700;cursor:pointer;line-height:1}
+.t3still .t3zoom,.t3still .t3compass,.t3still #t3time{display:none}
+.t3bar{display:grid;grid-template-columns:1fr minmax(260px,380px);gap:14px 28px;margin-top:14px;align-items:start}
+@media (max-width:860px){.t3bar{grid-template-columns:1fr}}
+.t3bar.off{display:none}
+.t3bar h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.t3chips{display:flex;flex-wrap:wrap;gap:6px}
+.t3chips button{border:2px solid var(--line);background:var(--surface-2);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600;cursor:pointer}
+.t3chips button:hover{border-color:var(--glacier)}
+.t3chips button:disabled{opacity:.45;cursor:default}
+.t3chips .go{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.t3slider{display:flex;align-items:center;gap:10px}
+.t3slider input{flex:1;accent-color:var(--accent);min-width:0}
+.t3slider output{font-weight:700;font-variant-numeric:tabular-nums;min-width:72px;text-align:right}
+/* Dates & crew */
+.topbar{display:grid;grid-template-columns:minmax(260px,320px) 1fr;gap:20px;align-items:start}
+@media (max-width:860px){.topbar{grid-template-columns:1fr}}
+.datefield{display:flex;flex-direction:column;gap:6px}
+.datefield label{font-weight:700;font-size:14px}
+.datefield input[type=date]{padding:9px 10px;border:2px solid var(--line);border-radius:8px;background:var(--surface-2);font-size:16px}
+.sync{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted);margin-top:8px}
+.sync i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.sync.on i{background:var(--good)} .sync.ro i{background:var(--warn)}
+.daystrip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+@media (max-width:620px){.daystrip{grid-template-columns:repeat(2,1fr)}}
+.dcell{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;font-size:13px}
+.dcell b{font-family:var(--font-display);font-size:20px;font-weight:800;text-transform:uppercase;line-height:1.1}
+.dcell .sun{font-variant-numeric:tabular-nums;color:var(--muted)}
+.norms{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;margin-top:12px}
+.norms b{font-variant-numeric:tabular-nums}
+.alerts{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.alert{font-size:13.5px;padding:8px 12px;border-radius:8px;background:var(--surface-2);border-left:4px solid var(--warn)}
+.alert.good{border-left-color:var(--good)} .alert.bad{border-left-color:var(--bad)}
+/* Tabs for booking */
+.btabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 14px}
+.btab{border:2px solid var(--line);background:var(--surface-2);border-radius:999px;padding:7px 14px;font-weight:700;cursor:pointer;font-size:14px}
+.btab[aria-selected="true"]{background:var(--pine);border-color:var(--pine);color:var(--surface)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.bcard{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface-2);display:flex;flex-direction:column;gap:6px}
+.bcard h4{margin:0;font-size:17px}
+.bcard .meta{font-size:12.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.bcard p{font-size:14px}
+.bcard .row{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;color:var(--muted)}
+.bcard .price{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--accent);line-height:1}
+.bcard a{font-size:14px;font-weight:700}
+.chipline{display:flex;flex-wrap:wrap;gap:6px}
+.mini{font-size:11.5px;font-weight:700;border-radius:20px;padding:2px 8px;background:var(--surface);border:1px solid var(--line)}
+.mini.na{border-color:var(--glacier);color:var(--glacier)}
+.subh{font-family:var(--font-display);font-size:19px;font-weight:800;text-transform:uppercase;margin:18px 0 8px}
+/* Backup */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:12px}
+.plan{border:1px solid var(--line);border-radius:12px;padding:14px;border-top:5px solid var(--warn);background:var(--surface-2)}
+.plan h4{margin:0 0 4px;font-size:17px}
+.plan .when{font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:8px}
+.plan ul{margin:0;padding-left:18px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+/* Crew */
+.crew{display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,1.4fr);gap:24px}
+@media (max-width:900px){.crew{grid-template-columns:1fr}}
+.inline{display:flex;gap:8px;flex-wrap:wrap}
+.inline input,.inline select{padding:8px 10px;border:2px solid var(--line);border-radius:8px;background:var(--surface-2);min-width:0}
+.inline input[type=text]{flex:1 1 140px}
+.inline input[type=number]{width:110px;text-align:right}
+.people{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.person{display:inline-flex;align-items:center;gap:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:5px 6px 5px 12px;font-weight:600}
+.person button{border:0;background:transparent;cursor:pointer;color:var(--muted);font-size:16px;width:24px;height:24px;border-radius:50%}
+.ledger{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+.ledger th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 0;border-bottom:2px solid var(--line)}
+.ledger td{padding:7px 0;border-bottom:1px solid var(--line)}
+.ledger td.amt{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.ledger button{border:0;background:transparent;cursor:pointer;color:var(--muted)}
+.bal{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.balrow{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:8px 12px;border-radius:8px;background:var(--surface-2)}
+.balrow b{font-variant-numeric:tabular-nums}
+.pos{color:var(--good)} .neg{color:var(--bad)}
+.settle{margin-top:12px;font-size:14px}
+.settle li{margin-bottom:4px}
+.empty{color:var(--muted);font-size:14px;padding:10px 0}
+svg text{font-family:var(--font-body)}
+.lbl{paint-order:stroke;stroke:var(--halo);stroke-linejoin:round;fill:var(--ink);font-weight:700}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap head">
+    <div class="sign">
+      <span class="eyebrow">Lake Coeur d’Alene &amp; Alberton Gorge · Summer plan</span>
+      <h1>Coeur d’Alene<br>Guys Weekend</h1>
+      <p>Four days, three nights in North Idaho. A summit or alpine-lake hike, a full day of whitewater on the Clark Fork, a lake you can swim in from downtown, and a per-person budget that updates as you change the plan.</p>
+    </div>
+    <div class="chips" aria-label="Trip at a glance">
+      <div class="chip"><b id="chipMiles">10.2</b><span>Trail miles</span></div>
+      <div class="chip"><b id="chipGain">3,950</b><span>Ft climbed</span></div>
+      <div class="chip"><b id="chipRiver">10</b><span>River miles</span></div>
+      <div class="chip"><b id="chipCost">$1,500</b><span>Per person, est.</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-label="Trip dates">
+    <div class="topbar">
+      <div class="datefield">
+        <label for="fStart">Arrival day (Day 1)</label>
+        <input type="date" id="fStart">
+        <span class="small muted">Sunrise and sunset are calculated for Coeur d’Alene, in Pacific time. Weather is the long-term average for that month.</span>
+        <span class="sync" id="syncPill"><i></i><span>Saved in this browser</span></span>
+      </div>
+      <div>
+        <div class="daystrip" id="dayStrip"></div>
+        <div class="norms" id="norms"></div>
+        <div class="alerts" id="dateAlerts"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card mapcard" aria-label="Trip map">
+      <div class="maptop">
+        <div class="seg" role="group" aria-label="Map view">
+          <button type="button" data-view="day">Today</button>
+          <button type="button" data-view="region">Region</button>
+          <button type="button" data-view="town">Downtown</button>
+        </div>
+        <span class="small muted" id="mapNote">Tap a pin for details</span>
+      </div>
+      <div class="mapbox">
+        <svg id="map" role="img" aria-label="Map of the trip area"></svg>
+        <div class="pop" id="pop" role="status"><button type="button" id="popClose" aria-label="Close details">×</button><h4 id="popTitle"></h4><p id="popText"></p></div>
+      </div>
+      <div class="legend" id="legend"></div>
+      <p class="credit">These are simplified maps for planning, not for navigation. Region: shaded relief, lakes, rivers, highways and state lines from Natural Earth, which is accurate to about a mile. Dashed roads, the Spokane River and the Hiawatha line are sketched between known points. Downtown: the street grid is rebuilt from Who’s On First address points, and the shoreline, parks and Tubbs Hill loop are sketches. Trailhead and venue pins use published coordinates or street addresses where I had them and are marked approximate where I did not.</p>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <section class="card">
+        <div class="tabs" role="tablist" aria-label="Trip days" id="tabs"></div>
+        <div class="daytitle"><h2 id="dayName"></h2><span class="muted" id="dayTag"></span></div>
+        <div id="dayNote"></div>
+        <ol class="timeline" id="timeline"></ol>
+        <div class="subh" style="margin-top:20px">Know before you go</div>
+        <div class="know" id="know"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-h"><h3>Pick the big hike</h3><span class="tag">DAY 2</span></div>
+        <p class="lede">Pick for the least-fit guy in the group. The sketch puts all three climbs on one scale so you can compare them.</p>
+        <div class="opts" id="hikeOpts"></div>
+        <div class="detail">
+          <div class="stats" id="hikeStats"></div>
+          <svg id="profile" viewBox="0 0 640 190" role="img" aria-label="The three hikes compared by distance and climb"></svg>
+          <p class="small muted">Straight lines from each trailhead to its high point, plotted against one-way distance. They show how steep each climb is on average, not the real shape of the trail.</p>
+          <p class="small muted" id="hikeNote" style="margin-top:8px"></p>
+          <div class="pacebar"><b>Group pace</b><div class="seg" role="group" aria-label="Group pace"><button type="button" data-pace="relaxed">Relaxed</button><button type="button" data-pace="steady">Steady</button><button type="button" data-pace="fast">Fast</button></div><span class="small muted" id="paceNote"></span></div>
+          <table class="wp"><thead><tr><th>Mile</th><th>Elevation</th><th>Waypoint</th><th style="text-align:right">You arrive</th></tr></thead><tbody id="wpBody"></tbody></table>
+          <div class="turn" id="turnNote"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-h"><h3>Pick the river day</h3><span class="tag">DAY 3</span></div>
+        <p class="lede">The real whitewater near Coeur d’Alene in midsummer is the Clark Fork through Alberton Gorge, two hours east in Montana. The Spokane River is the easy, close-to-town alternative.</p>
+        <div class="opts" id="riverOpts"></div>
+        <div class="detail"><div class="stats" id="riverStats"></div><p class="small muted" id="riverNote"></p></div>
+        <div class="subh" id="runHead">The run</div>
+        <p class="small muted" style="max-width:72ch" id="runLede"></p>
+        <ol class="rapids" id="rapidList"></ol>
+        <div class="subh">Water through the season</div>
+        <table class="flow"><tbody>
+          <tr><td>May and June</td><td>Snowmelt season. ROW runs the Spokane, St. Joe and Lochsa. The Spokane has its Class III+ water in late May and June. The Clark Fork trips have not started.</td></tr>
+          <tr><td>July 1 to about July 10</td><td>Clark Fork season opens with higher flows. ROW’s minimum age is 12 until the water drops.</td></tr>
+          <tr><td>Mid-July through August</td><td>Prime Clark Fork season. ROW lists the water at 62 to 68°F and runs daily from July 19 to August 29 in 2027. The Spokane is a warm, gentle float.</td></tr>
+          <tr><td>September</td><td>ROW’s 2027 Clark Fork season ends August 29. Ask about late trips.</td></tr>
+        </tbody></table>
+        <p class="small muted" style="margin-top:8px">Alberton Gorge is listed as runnable from about 1,200 to 20,000 cfs. Your outfitter decides on the day.</p>
+      </section>
+
+      <section class="card">
+        <div class="section-h"><h3>Pick the last day</h3><span class="tag">DAY 4</span></div>
+        <p class="lede">Your flight home decides this one. The bike ride needs an evening departure. The lake morning works with an afternoon flight.</p>
+        <div class="opts" id="lastOpts"></div>
+        <div class="detail"><div class="stats" id="lastStats"></div><p class="small muted" id="lastNote"></p></div>
+      </section>
+
+      <section class="card">
+        <div class="section-h"><h3>Pick the dinners</h3></div>
+        <p class="lede">Prices are my per-person estimates for an entrée and a soft drink, before tip, so check current menus. Book Night 1 and the send-off first.</p>
+        <div class="dinners" id="dinners"></div>
+      </section>
+    </div>
+  </div>
+
+  <section class="card" id="book">
+    <div class="section-h"><h2>Book it</h2></div>
+    <p class="lede">Real places with addresses, hours and links where I found them. Prices and hours change by season, so confirm them when you book.</p>
+    <div class="btabs" role="tablist" aria-label="Booking categories">
+      <button type="button" class="btab" role="tab" data-btab="raft">River, bikes and lake</button>
+      <button type="button" class="btab" role="tab" data-btab="stay">Where to stay</button>
+      <button type="button" class="btab" role="tab" data-btab="eat">Food plan</button>
+    </div>
+    <div id="bookPanel"></div>
+  </section>
+
+  <section class="card" id="backup">
+    <div class="section-h"><h2>Backup plans</h2></div>
+    <p class="lede">What to do if smoke, heat or a cancellation gets in the way. Check the forecast and air quality the night before each big day.</p>
+    <div class="plans" id="plans"></div>
+  </section>
+
+  <section class="card" id="crewCard">
+    <div class="section-h"><h2>Crew and who paid</h2></div>
+    <p class="lede" id="crewLede">Add each guy, log what each person pays for, and the page works out who owes whom. Split evenly across the crew.</p>
+    <div class="crew">
+      <div>
+        <form class="inline" id="crewForm">
+          <input type="text" id="crewName" placeholder="Name" maxlength="24" aria-label="Crew member name">
+          <button class="btn" type="submit">Add</button>
+        </form>
+        <ul class="people" id="people"></ul>
+        <div class="bal" id="balances"></div>
+        <ol class="settle" id="settle"></ol>
+      </div>
+      <div>
+        <form class="inline" id="expForm">
+          <select id="expWho" aria-label="Who paid"></select>
+          <input type="text" id="expWhat" placeholder="What (e.g. house deposit)" maxlength="40" aria-label="What was paid for">
+          <input type="number" id="expAmt" placeholder="$" min="0" step="1" aria-label="Amount">
+          <button class="btn" type="submit">Log</button>
+        </form>
+        <table class="ledger"><thead><tr><th>Paid by</th><th>For</th><th style="text-align:right">Amount</th><th></th></tr></thead><tbody id="ledger"></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="budget">
+    <div class="section-h"><h2>What it costs</h2></div>
+    <p class="lede">Built from published 2026 and 2027 prices where they exist and labeled estimates where they don't. Change any number to match real quotes.</p>
+    <div class="budget">
+      <div>
+        <div class="field"><label>Guys going</label><div class="stepper"><button type="button" id="nMinus" aria-label="Fewer people">−</button><output id="nOut">4</output><button type="button" id="nPlus" aria-label="More people">+</button></div><span class="hint" id="carsHint"></span></div>
+        <div class="field"><label for="fFlight">Round-trip flight, AUS to GEG</label><input type="number" id="fFlight" min="0" step="10"><span class="hint">Per person. American’s fare calendar for July 2026 ran from $359 to $876, and KAYAK’s cheapest recent round trips were $206 to $279. There are no nonstops, so every routing connects once.</span></div>
+        <div class="field"><label>Lodging</label><div class="seg" role="group" aria-label="Lodging type" style="justify-self:end"><button type="button" data-lodge="house">House</button><button type="button" data-lodge="hotel">Hotel</button></div><span class="hint" id="lodgeHint"></span></div>
+        <div class="field"><label for="fLodge" id="fLodgeLabel">Nightly rate</label><input type="number" id="fLodge" min="0" step="10"><span class="hint" id="lodgeRateHint"></span></div>
+        <div class="field"><label for="fTax">Taxes and fees</label><input type="number" id="fTax" min="0" max="40" step="1"><span class="hint">Percent added to lodging. Estimate: covers lodging taxes plus cleaning or resort fees.</span></div>
+        <div class="field"><label for="fCar">SUV rental per day</label><input type="number" id="fCar" min="0" step="5"><span class="hint">KAYAK puts July, the priciest month, at about $127 a day for an SUV at Spokane airport, against a $76 yearly average.</span></div>
+        <div class="field"><label for="fFood">Breakfast, lunch, trail food per day</label><input type="number" id="fFood" min="0" step="5"><span class="hint">Per person, estimate. Groceries for breakfast and trail snacks plus a casual lunch. Lunch on the Clark Fork is included.</span></div>
+      </div>
+      <div>
+        <div class="total"><span class="big" id="ppTotal">$0</span><span><b>per person</b><br><span class="muted small" id="grpTotal"></span></span></div>
+        <div class="bar" id="costBar" aria-hidden="true"></div>
+        <table class="lines" id="costLines"></table>
+      </div>
+    </div>
+  </section>
+
+  <div class="lower">
+    <section class="card">
+      <h2>When to book</h2>
+      <p class="lede">July and August are peak season on the lake. Lodging and the rental car go first. Checks save in this browser only.</p>
+      <ul class="book" id="bookList"></ul>
+    </section>
+    <section class="card">
+      <h2>Good to know</h2>
+      <table class="facts">
+        <thead><tr><th>Item</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Clark Fork full day with ROW, adult, 2027<br><span class="small muted">Youth $130. Add a 7% access fee and a 3% Montana use fee. Tips are separate.</span></td><td>$140</td></tr>
+          <tr><td>Spokane River half-day scenic float, adult<br><span class="small muted">From a recent listing. Confirm the 2027 price.</span></td><td>$65</td></tr>
+          <tr><td>Route of the Hiawatha, 2026<br><span class="small muted">$20 trail pass, $20 shuttle, $40 bike rental, with $10 off for reserving ahead, per a July 2026 Coeur d’Alene Press piece.</span></td><td>about $80</td></tr>
+          <tr><td>Single kayak, half day<br><span class="small muted">From a recent rental listing on the lake.</span></td><td>$38</td></tr>
+          <tr><td>Tubbs Hill, Mineral Ridge, Stevens Lakes, Scotchman Peak<br><span class="small muted">No pass or entry fee. Pay parking at McEuen Park for Tubbs Hill.</span></td><td>Free</td></tr>
+        </tbody>
+      </table>
+      <table class="facts" style="margin-top:18px">
+        <thead><tr><th>Drive (approx., no traffic)</th><th>Time</th></tr></thead>
+        <caption style="caption-side:bottom;text-align:left;font-size:12.5px;color:var(--muted);padding-top:8px">ROW lists the Superior drive as 105 miles and a little under 2 hours. The other times are my estimates from highway mileage, so check them on a phone map. Summer road work on I-90 can add time.</caption>
+        <tbody>
+          <tr><td>Spokane airport to downtown Coeur d’Alene</td><td>40–45 min</td></tr>
+          <tr><td>Downtown to Mineral Ridge</td><td>20 min</td></tr>
+          <tr><td>Downtown to Stevens Lakes trailhead</td><td>1 hr</td></tr>
+          <tr><td>Downtown to Scotchman Peak trailhead</td><td>1 hr 50 min</td></tr>
+          <tr><td>Downtown to Superior, Montana</td><td>just under 2 hr</td></tr>
+          <tr><td>Downtown to Hiawatha East Portal</td><td>1 hr 15 min</td></tr>
+          <tr><td>Hiawatha East Portal to Spokane airport</td><td>2 hr</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="lower">
+    <section class="card">
+      <h2>When to go</h2>
+      <p class="lede">Late July through August lines everything up: daily Clark Fork trips, snow-free trails, a warm lake and the driest weeks of the year. The tradeoffs are crowds and a chance of wildfire smoke.</p>
+      <div class="season" id="season"></div>
+      <div class="keyrow"><span><i class="c3"></i>Great</span><span><i class="c2"></i>Possible, with caveats</span><span><i class="c1"></i>Poor</span><span><i class="c0"></i>Closed</span></div>
+    </section>
+    <section class="card">
+      <h2>Pack list</h2>
+      <ul class="checklist" id="checklist"></ul>
+      <div class="actions">
+        <button class="btn" type="button" id="copyBtn">Copy plan for the group chat</button>
+        <button class="btn ghost" type="button" id="resetBtn">Reset picks</button>
+        <span class="toast" id="toast" role="status"></span>
+      </div>
+      <textarea id="fallback" readonly aria-label="Trip plan text"></textarea>
+    </section>
+  </div>
+
+  <section class="card">
+    <h3>Sources</h3>
+    <ul class="sources">
+      <li><a href="https://www.rowadventures.com/montana-rafting/clark-fork-river-rafting">ROW Adventures: Clark Fork day trip, prices, season, meeting place</a></li>
+      <li><a href="https://www.rowadventures.com/node/1147">ROW Adventures: one-day trips near Spokane and Coeur d’Alene</a></li>
+      <li><a href="https://www.americanwhitewater.org/content/River/detail/id/996">American Whitewater: Clark Fork, Cyr to Tarkio (Alberton Gorge)</a></li>
+      <li><a href="https://www.scotchmanpeaks.org/?p=274">Friends of Scotchman Peaks: Trail 65</a></li>
+      <li><a href="https://www.hikearizona.com/decoder.php?ZTN=9714">Scotchman Peak trail sections and gain</a></li>
+      <li><a href="https://www.hikingproject.com/trail/7086134/scotchman-peak-65">Hiking Project: Scotchman Peak meadow and goats</a></li>
+      <li><a href="https://www.inlandnwroutes.com/upper-and-lower-stevens-lake.html">Inland NW Routes: Lower and Upper Stevens Lakes</a></li>
+      <li><a href="https://www.wta.org/go-hiking/hikes/stevens-lake">Washington Trails Association: Stevens Lake</a></li>
+      <li><a href="https://evansoutdooradventures.com/?p=1595">Stevens Lakes trip report: trailhead elevation and creek crossing</a></li>
+      <li><a href="https://blm.gov/visit/mineral-ridge-scenic-area-and-national-recreation-trail">BLM: Mineral Ridge Scenic Area and National Recreation Trail</a></li>
+      <li><a href="https://www.americantrails.org/resources/mineral-ridge-national-recreation-trail-idaho">American Trails: Mineral Ridge directions and climb</a></li>
+      <li><a href="https://coeurdalene.org/places/idaho/coeur-dalene/hiking/mineral-ridge-scenic-area/">Mineral Ridge trailhead facilities</a></li>
+      <li><a href="https://www.tubbshill.org/maps">Tubbs Hill Foundation: trailheads and parking</a></li>
+      <li><a href="https://visitidaho.org/things-to-do/hiking-backpacking/tubbs-hill/">Visit Idaho: Tubbs Hill</a></li>
+      <li><a href="https://www.ridethehiawatha.com/">Route of the Hiawatha: trail, shuttle and rental details</a></li>
+      <li><a href="https://www.cdacruises.com/daily-cruises/">Lake Coeur d’Alene Cruises: daily scenic cruises</a></li>
+      <li><a href="https://casago.com/unwind/restaurants/ten-6">Ten/6: address and hours</a></li>
+      <li><a href="https://anthonys.com/?p=789">Anthony’s at Coeur d’Alene: address and hours</a></li>
+      <li><a href="https://www.enprimeurclub.com/restaurants/angelo-s-ristorante-coeur-dalene-restaurant">Angelo’s Ristorante: address and phone</a></li>
+      <li><a href="https://climate-charts.com/USA-Stations/ID/USC00101956.html">Coeur d’Alene monthly climate normals</a></li>
+      <li><a href="https://www.aa.com/en-us/flights-from-austin-to-spokane">American Airlines: Austin to Spokane fares</a></li>
+      <li><a href="https://www.kayak.com/flight-routes/Austin-Bergstrom-AUS/Spokane-GEG">KAYAK: Austin to Spokane flights</a></li>
+      <li><a href="https://www.kayak.com/Spokane-Airport-SUV-Rentals.GEG.acsv.ksp">KAYAK: Spokane airport SUV rental prices</a></li>
+      <li><a href="https://www.airdna.co/vacation-rental-data/app/us/idaho/coeur-d-alene/revenue">AirDNA: Coeur d’Alene short-term rental rates</a></li>
+      <li><a href="https://tripoutside.com/browse/item:Spokane_River_Scenic_Float_Trip:i1ve5xgmsqwf5hvetjwfskvarfdensqvfkxqcr2vsczejht">Spokane River scenic float listing</a></li>
+      <li><a href="https://docklyne.com/kayak/HH130">Kayak rental listing, Lake Coeur d’Alene</a></li>
+      <li><a href="https://www.kcgov.us/Archive.aspx?ADID=2072">Kootenai County: lake elevations</a></li>
+      <li><a href="https://www.naturalearthdata.com/">Natural Earth: relief, lakes, rivers, roads and state lines</a></li>
+      <li><a href="https://github.com/whosonfirst-data/whosonfirst-data-venue-us-id">Who’s On First: open address points used for the downtown street grid</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap">Prices are 2026 and 2027 listings and estimates. Check them against real quotes before you book. Check conditions with the Idaho Panhandle National Forests, ROW Adventures and the Route of the Hiawatha before you go. The maps are simplified and are not for navigation.</footer>
+
+<script>
+var GEO={"views":{"region":{"L0":46.88,"L1":48.42,"O0":-117.8,"O1":-114.38,"w":960,"h":640},"town":{"L0":47.6622,"L1":47.6832,"O0":-116.7965,"O1":-116.7598,"w":960,"h":813}},"lakes":[{"n":"Flathead Lake","pts":[[47.9067,-114.1865],[47.9182,-114.1491],[47.9238,-114.1388],[47.9397,-114.15],[47.9547,-114.1562],[47.9723,-114.1587],[47.9956,-114.1593],[48.01,-114.1672],[48.02,-114.1846],[48.0327,-114.2012],[48.0542,-114.2069],[48.0718,-114.1999],[48.0848,-114.1846],[48.0924,-114.1644],[48.0951,-114.1425],[48.0919,-114.1309],[48.0833,-114.125],[48.073,-114.1208],[48.0642,-114.1145],[48.0607,-114.1048],[48.0633,-114.0818],[48.0612,-114.0699],[48.0465,-114.0554],[48.0012,-114.0377],[47.9632,-114.0165],[47.94,-114.0159],[47.8967,-114.0227],[47.8717,-114.0209],[47.8322,-114.0053],[47.8107,-114.0016],[47.786,-114.0031],[47.7636,-114.0093],[47.7519,-114.0218],[47.7595,-114.0425],[47.7669,-114.0461],[47.7884,-114.0508],[47.7937,-114.0568],[47.7916,-114.0658],[47.7845,-114.0696],[47.7748,-114.0704],[47.7657,-114.0699],[47.7527,-114.0639],[47.7283,-114.0428],[47.7183,-114.0425],[47.7107,-114.0574],[47.7118,-114.0777],[47.7183,-114.1183],[47.7121,-114.1541],[47.7154,-114.1662],[47.7321,-114.1593],[47.751,-114.1547],[47.7628,-114.1407],[47.7719,-114.1231],[47.7837,-114.1077],[47.7981,-114.1058],[47.8075,-114.1211],[47.8287,-114.2167],[47.8284,-114.2412],[47.8199,-114.2833],[47.8243,-114.3],[47.8419,-114.3169],[47.8446,-114.286],[47.8693,-114.2467],[47.8755,-114.2175],[47.8781,-114.2059],[47.8852,-114.1961],[47.8952,-114.1891],[47.9067,-114.1865]]},{"n":"Lake Pend Oreille","pts":[[48.1752,-116.217],[48.1696,-116.203],[48.1551,-116.1895],[48.1501,-116.2067],[48.1551,-116.2553],[48.1534,-116.2628],[48.1493,-116.2678],[48.1384,-116.2754],[48.1348,-116.283],[48.1348,-116.3922],[48.1301,-116.4109],[48.1186,-116.4136],[48.1045,-116.4125],[48.0907,-116.4192],[48.0745,-116.4415],[48.0639,-116.4528],[48.0527,-116.4577],[48.0442,-116.4549],[48.0327,-116.4416],[48.0247,-116.4372],[48.0147,-116.4353],[47.9941,-116.4372],[47.9709,-116.4537],[47.9617,-116.492],[47.9567,-116.5669],[47.9635,-116.5669],[47.9667,-116.5613],[47.972,-116.557],[47.9788,-116.5542],[47.9874,-116.5532],[47.9971,-116.5504],[47.9971,-116.5433],[47.9947,-116.5343],[47.9977,-116.5254],[48.0097,-116.5154],[48.0177,-116.5162],[48.0392,-116.5327],[48.0615,-116.5315],[48.0886,-116.5237],[48.1116,-116.5111],[48.1313,-116.4789],[48.1799,-116.4518],[48.1966,-116.4372],[48.1866,-116.4136],[48.1831,-116.4001],[48.1831,-116.3888],[48.1893,-116.3801],[48.2069,-116.3711],[48.2105,-116.3651],[48.2149,-116.3613],[48.2243,-116.363],[48.234,-116.3693],[48.2426,-116.3892],[48.2608,-116.4041],[48.2652,-116.4154],[48.2614,-116.426],[48.2461,-116.4422],[48.244,-116.4501],[48.2529,-116.4602],[48.28,-116.4693],[48.2855,-116.4812],[48.2785,-116.5037],[48.2487,-116.538],[48.244,-116.5601],[48.2529,-116.5711],[48.2691,-116.5573],[48.2873,-116.5363],[48.3023,-116.5254],[48.3073,-116.5133],[48.3112,-116.4861],[48.3129,-116.4372],[48.3076,-116.4262],[48.2914,-116.4122],[48.2855,-116.4031],[48.2835,-116.39],[48.2855,-116.3512],[48.2794,-116.3336],[48.2652,-116.3136],[48.2384,-116.2863],[48.2317,-116.2815],[48.2276,-116.2797],[48.2234,-116.2813],[48.2167,-116.2863],[48.209,-116.2782],[48.1899,-116.2629],[48.1831,-116.2522],[48.1752,-116.217]]},{"n":"Coeur D'Alene Lake","pts":[[47.6242,-116.7508],[47.6188,-116.7656],[47.6085,-116.7735],[47.5988,-116.7787],[47.5909,-116.7882],[47.5789,-116.7899],[47.5649,-116.7856],[47.5507,-116.7855],[47.5371,-116.7897],[47.5247,-116.7989],[47.5156,-116.8092],[47.5059,-116.818],[47.4837,-116.8479],[47.4734,-116.8483],[47.4643,-116.8403],[47.458,-116.826],[47.4554,-116.8093],[47.4474,-116.7879],[47.4347,-116.7718],[47.4233,-116.7623],[47.4111,-116.7551],[47.3982,-116.7517],[47.3951,-116.7592],[47.4157,-116.7788],[47.4264,-116.7941],[47.4362,-116.811],[47.4534,-116.8496],[47.4685,-116.8924],[47.4807,-116.8898],[47.5355,-116.8296],[47.5476,-116.8204],[47.5639,-116.8178],[47.5803,-116.8191],[47.595,-116.8171],[47.607,-116.8046],[47.6157,-116.7916],[47.6274,-116.7861],[47.6421,-116.7943],[47.648,-116.8048],[47.6555,-116.8127],[47.6691,-116.812],[47.6587,-116.7726],[47.6563,-116.7578],[47.6506,-116.7444],[47.6406,-116.7263],[47.6295,-116.7097],[47.6175,-116.7052],[47.6197,-116.7237],[47.623,-116.7369],[47.6242,-116.7508]]}],"rivers":[{"n":"Pend Oreille","pts":[[48.4788,-117.2826],[48.4723,-117.285],[48.468,-117.2848],[48.463,-117.2834],[48.369,-117.2764],[48.3531,-117.2703],[48.3111,-117.2468],[48.2713,-117.2334],[48.2589,-117.2128],[48.2481,-117.1039],[48.2414,-117.0749],[48.2289,-117.0541],[48.2122,-117.0372],[48.1991,-117.0196],[48.19,-116.9996],[48.1846,-116.9752],[48.1874,-116.8837],[48.1832,-116.8548],[48.1769,-116.8415],[48.1595,-116.8168],[48.1532,-116.8039],[48.1518,-116.7896],[48.155,-116.7735],[48.1612,-116.7582],[48.1691,-116.7462],[48.1762,-116.7401],[48.1907,-116.7339],[48.1984,-116.7296],[48.2043,-116.7237],[48.2134,-116.7103],[48.2195,-116.7043],[48.2477,-116.6872],[48.256,-116.6767],[48.2591,-116.6588],[48.2573,-116.6395],[48.2491,-116.6014],[48.2481,-116.5823],[48.2486,-116.578],[48.249,-116.576],[48.2498,-116.5695]]},{"n":"Clark Fork","pts":[[47.0332,-114.3308],[47.0298,-114.3752],[47.0198,-114.3827],[47.0108,-114.3868],[47.0036,-114.3927],[46.9991,-114.4062],[47.0012,-114.4308],[47.0213,-114.4808],[47.0264,-114.5052],[47.0242,-114.5161],[47.0148,-114.5348],[47.0128,-114.5461],[47.0153,-114.558],[47.0282,-114.5793],[47.0332,-114.5906],[47.0349,-114.6148],[47.0225,-114.6627],[47.0189,-114.6871],[47.0247,-114.7108],[47.0394,-114.7247],[47.1132,-114.7506],[47.122,-114.755],[47.13,-114.7639],[47.1395,-114.7842],[47.1458,-114.7929],[47.1514,-114.8037],[47.1586,-114.8314],[47.1714,-114.8402],[47.1971,-114.8649],[47.2113,-114.8832],[47.2293,-114.9201],[47.2421,-114.9372],[47.2518,-114.9591],[47.2554,-115.018],[47.266,-115.043],[47.278,-115.0485],[47.3016,-115.055],[47.3245,-115.0565],[47.3349,-115.0467],[47.338,-115.0246],[47.3519,-114.9783],[47.3553,-114.9543],[47.3277,-114.8559],[47.3203,-114.8065],[47.3417,-114.7755],[47.3801,-114.7799],[47.4163,-114.8118],[47.4646,-114.8854],[47.4665,-114.8907],[47.4681,-114.9002],[47.4714,-114.9059],[47.4751,-114.909],[47.482,-114.9108],[47.4857,-114.9133],[47.505,-114.9308],[47.5104,-114.9409],[47.5124,-114.9577],[47.52,-114.9784],[47.5362,-115.0096],[47.5403,-115.0504],[47.5644,-115.12],[47.5677,-115.1423],[47.5728,-115.1627],[47.5938,-115.208],[47.5955,-115.2355],[47.5825,-115.2736],[47.5812,-115.2894],[47.584,-115.3038],[47.5935,-115.3244],[47.5988,-115.3455],[47.6068,-115.3564],[47.6257,-115.3754],[47.6378,-115.3851],[47.6455,-115.3867],[47.6528,-115.3853],[47.6638,-115.3863],[47.6769,-115.3909],[47.7055,-115.4081],[47.7155,-115.4121],[47.7284,-115.4136],[47.7386,-115.4163],[47.7462,-115.4236],[47.751,-115.4334],[47.7525,-115.4443],[47.7575,-115.4521],[47.7686,-115.4591],[47.7874,-115.4682],[47.8152,-115.4893],[47.8209,-115.4962],[47.8256,-115.5093],[47.8306,-115.5354],[47.8514,-115.5641],[47.8593,-115.585],[47.8756,-115.66],[47.8831,-115.6769],[47.8965,-115.6855],[47.9413,-115.6915],[47.9553,-115.701],[48.0088,-115.7637],[48.0212,-115.7856],[48.0283,-115.8175],[48.0335,-115.8297],[48.0411,-115.84],[48.0505,-115.8444],[48.0564,-115.8501],[48.0974,-115.9836],[48.1075,-116.0657],[48.119,-116.1105],[48.1353,-116.1527],[48.1552,-116.1894]]},{"n":"Flathead","pts":[[47.568,-114.3214],[47.5654,-114.3342],[47.5613,-114.3379],[47.5447,-114.3436],[47.5339,-114.3511],[47.5212,-114.3577],[47.5084,-114.3607],[47.4975,-114.3573],[47.5052,-114.3428],[47.5115,-114.3253]]},{"n":"Flathead","pts":[[47.4267,-114.3234],[47.4139,-114.328],[47.4033,-114.3287],[47.3848,-114.3237],[47.3743,-114.3247],[47.3582,-114.3323],[47.3448,-114.3434],[47.336,-114.358],[47.3336,-114.3754],[47.337,-114.3951],[47.3474,-114.429],[47.354,-114.4704],[47.3757,-114.5131],[47.3837,-114.5345],[47.3848,-114.5565],[47.3806,-114.5832],[47.3713,-114.609],[47.3487,-114.6408],[47.3463,-114.6571],[47.3477,-114.6737],[47.3585,-114.7131],[47.3592,-114.7222],[47.3582,-114.7355],[47.3529,-114.7616],[47.3516,-114.7753]]},{"n":"Pine","pts":[[47.0632,-116.9612],[47.0634,-116.9738],[47.0675,-117.0019],[47.0763,-117.0256],[47.0861,-117.0418],[47.0913,-117.0642],[47.0871,-117.0885],[47.0781,-117.1088],[47.0804,-117.1269],[47.0945,-117.1327],[47.1092,-117.1283],[47.1239,-117.1292],[47.1386,-117.1357],[47.1443,-117.1489],[47.1411,-117.169],[47.1474,-117.1798],[47.1647,-117.1869],[47.1836,-117.1997],[47.1971,-117.2182],[47.2105,-117.2366],[47.2249,-117.2466],[47.2348,-117.2618],[47.2314,-117.287],[47.2194,-117.3168],[47.2141,-117.3439],[47.2201,-117.3651],[47.2346,-117.3778],[47.2546,-117.3768],[47.2682,-117.3784],[47.2711,-117.3981],[47.2659,-117.4202],[47.2535,-117.4337],[47.2399,-117.4344],[47.2287,-117.44],[47.2278,-117.4614],[47.2268,-117.4828],[47.2076,-117.5065],[47.1996,-117.5268],[47.2027,-117.5503],[47.2142,-117.5641],[47.2256,-117.5778],[47.2256,-117.5998]]},{"n":"Palouse","pts":[[47.0055,-116.4766],[47.0016,-116.4891],[46.9985,-116.5195],[46.9993,-116.5516],[46.9938,-116.5805],[46.9852,-116.6031],[46.9766,-116.6258],[46.9766,-116.6484],[46.9766,-116.6711],[46.9649,-116.6859],[46.9477,-116.7031],[46.943,-116.7258],[46.9462,-116.75],[46.9448,-116.7844],[46.9434,-116.8188],[46.942,-116.8531],[46.9438,-116.883],[46.9457,-116.9129],[46.9426,-116.9356],[46.9363,-116.9586]]},{"n":"Saint Joe","pts":[[47.0535,-115.1303],[47.0455,-115.134],[47.0409,-115.1537],[47.0474,-115.1855],[47.054,-115.2173],[47.0513,-115.2464],[47.039,-115.2654],[47.0251,-115.2719],[47.0112,-115.2784],[47.007,-115.2958],[47.0063,-115.3175],[46.9933,-115.3505],[46.9998,-115.3588],[47.0114,-115.3615],[47.0237,-115.3689],[47.0435,-115.3522],[47.0629,-115.3525],[47.081,-115.3589],[47.0933,-115.3726],[47.1043,-115.3795],[47.1159,-115.3909],[47.1289,-115.4072],[47.1456,-115.416],[47.1591,-115.4278],[47.167,-115.4484],[47.1748,-115.4691],[47.1901,-115.4996],[47.2005,-115.5328],[47.2097,-115.5556],[47.2201,-115.575],[47.2259,-115.6029]]},{"n":"Rock Creek","pts":[[47.2256,-117.5998],[47.2227,-117.6205],[47.2192,-117.637],[47.208,-117.6516],[47.1955,-117.6714],[47.1823,-117.6853],[47.1667,-117.6966],[47.1498,-117.7163],[47.1328,-117.736],[47.1202,-117.7557],[47.1094,-117.7669],[47.0975,-117.7826],[47.0824,-117.8112],[47.0795,-117.8325],[47.0827,-117.8507]]},{"n":"Palouse","pts":[[46.9363,-116.9586],[46.9324,-116.986],[46.934,-117.0125],[46.9355,-117.0391],[46.9405,-117.0695],[46.9525,-117.0875],[46.9574,-117.1129],[46.9561,-117.1501],[46.9595,-117.1865],[46.9721,-117.2139],[46.9744,-117.2345],[46.9574,-117.2573],[46.9405,-117.2801],[46.929,-117.3007],[46.9229,-117.319],[46.9139,-117.3367],[46.902,-117.3539],[46.8918,-117.365],[46.8912,-117.3819],[46.9003,-117.4048],[46.914,-117.4131],[46.9299,-117.4201],[46.9414,-117.4354],[46.9495,-117.4517],[46.952,-117.4785],[46.9544,-117.5053],[46.9655,-117.5281],[46.9765,-117.5411],[46.9876,-117.5541],[46.9925,-117.5881],[47.0016,-117.6034],[47.0006,-117.6257],[46.9896,-117.655],[46.9867,-117.6847],[46.9839,-117.7144],[46.981,-117.744],[46.9886,-117.769],[46.9963,-117.7941],[46.9843,-117.8016],[46.9632,-117.8033],[46.9473,-117.8113],[46.9408,-117.8275],[46.9348,-117.8475]]},{"n":"Saint Joe","pts":[[47.6668,-116.8033],[47.6787,-116.8066],[47.6965,-116.8061],[47.7046,-116.8209],[47.7017,-116.8548],[47.6987,-116.8887],[47.698,-116.922],[47.7004,-116.9501],[47.6998,-116.9757],[47.6992,-117.0013],[47.6952,-117.0255],[47.6872,-117.0517],[47.6846,-117.072],[47.6788,-117.0867],[47.6754,-117.1024],[47.6774,-117.1245],[47.6779,-117.151],[47.6726,-117.1794],[47.672,-117.2046],[47.6847,-117.2297],[47.6893,-117.2587],[47.6863,-117.2874],[47.6796,-117.3145],[47.673,-117.3415],[47.6725,-117.363],[47.665,-117.3935],[47.6575,-117.4239],[47.6636,-117.4545],[47.6813,-117.4818],[47.698,-117.501],[47.7137,-117.5124],[47.7272,-117.5162],[47.7408,-117.5201],[47.756,-117.5357],[47.7713,-117.5407],[47.7909,-117.5428],[47.7955,-117.563],[47.7939,-117.5873],[47.8037,-117.6056],[47.8201,-117.6202],[47.8309,-117.639],[47.8417,-117.6578],[47.8584,-117.6658],[47.8719,-117.6639],[47.8827,-117.6687],[47.8829,-117.6835],[47.8715,-117.6964],[47.8562,-117.7042],[47.8431,-117.7186],[47.8321,-117.7395],[47.8259,-117.7637],[47.8198,-117.7878],[47.8186,-117.8147],[47.832,-117.8381]]},{"n":"Saint Joe","pts":[[47.2259,-115.6029],[47.2298,-115.6293],[47.2337,-115.6557],[47.2333,-115.6784],[47.2287,-115.6973],[47.2278,-115.7174],[47.2307,-115.7388],[47.2368,-115.7567],[47.2462,-115.7712],[47.2505,-115.7923],[47.2498,-115.8202],[47.2491,-115.8481],[47.2518,-115.8678],[47.2545,-115.8876],[47.2525,-115.9152],[47.2492,-115.9364],[47.2479,-115.9669],[47.2492,-116.0021],[47.2505,-116.0373],[47.2635,-116.0704],[47.2671,-116.0913],[47.2676,-116.1149],[47.2649,-116.1412],[47.2659,-116.1672],[47.2707,-116.1932],[47.2705,-116.2192],[47.2744,-116.242],[47.2875,-116.2619],[47.3041,-116.2727],[47.316,-116.2843],[47.3123,-116.3186],[47.3156,-116.3553],[47.319,-116.3919],[47.3226,-116.4122],[47.3231,-116.4323],[47.3284,-116.4507],[47.3324,-116.4773],[47.3328,-116.5057],[47.3331,-116.5341],[47.326,-116.5533],[47.3176,-116.5685],[47.3198,-116.5849],[47.3302,-116.6091],[47.3372,-116.6356],[47.3459,-116.6583],[47.3564,-116.6773],[47.3643,-116.6966],[47.3697,-116.7162],[47.3783,-116.7331],[47.3901,-116.7473],[47.3973,-116.7538]]},{"n":"Priest","pts":[[48.4796,-116.9056],[48.4622,-116.9061],[48.45,-116.9009],[48.4395,-116.901],[48.4272,-116.9031],[48.4166,-116.9166],[48.4084,-116.922],[48.4064,-116.9087],[48.4083,-116.8849],[48.3964,-116.8724],[48.3728,-116.8659],[48.3513,-116.8541],[48.3354,-116.8545],[48.3209,-116.8629],[48.3065,-116.8713],[48.2944,-116.8764],[48.2779,-116.8688],[48.2614,-116.8613],[48.2479,-116.8628],[48.2357,-116.8783],[48.2235,-116.8937],[48.2051,-116.9],[48.1868,-116.9063]]},{"n":"Kootenay","pts":[[48.4655,-115.8877],[48.4486,-115.8683],[48.4429,-115.8407],[48.4469,-115.812],[48.4509,-115.7833],[48.4499,-115.7461],[48.4489,-115.709],[48.4479,-115.6719],[48.443,-115.6461],[48.4338,-115.622],[48.4232,-115.6042],[48.4126,-115.5865],[48.4003,-115.5542],[48.3943,-115.5327],[48.4035,-115.5142],[48.4127,-115.4957],[48.4149,-115.4747],[48.4062,-115.458],[48.3867,-115.4456],[48.3736,-115.4284],[48.3669,-115.4063],[48.3641,-115.3782],[48.3653,-115.3439],[48.3705,-115.3225],[48.383,-115.3232],[48.401,-115.3206],[48.4117,-115.3148]]}],"roads":[{"n":"90","k":"hw","pts":[[47.7065,-116.7982],[47.7047,-116.8207],[47.7169,-116.8346],[47.7186,-116.8433],[47.7169,-116.8867],[47.7238,-116.9683],[47.7013,-117.0448],[47.6978,-117.0413],[47.6804,-117.0934],[47.6735,-117.1351],[47.6474,-117.2045],[47.6492,-117.2688],[47.6301,-117.3417],[47.6283,-117.373],[47.6353,-117.4199]]},{"n":"90","k":"hw","pts":[[47.637,-117.4702],[47.6162,-117.5223],[47.5884,-117.5692],[47.5206,-117.663],[47.4078,-117.8436]]},{"n":"93","k":"us","pts":[[47.835,-114.3444],[47.828,-114.3513],[47.8176,-114.353],[47.8054,-114.3374]]},{"n":"90","k":"hw","pts":[[47.4529,-115.6833],[47.4338,-115.6676],[47.4182,-115.6329],[47.4234,-115.5617],[47.3782,-115.3603],[47.3591,-115.3099],[47.3123,-115.2318],[47.3001,-115.204],[47.2966,-115.1797],[47.3001,-115.1102],[47.2932,-115.0807],[47.281,-115.0633],[47.248,-115.0459],[47.2358,-115.0355],[47.2358,-114.9852],[47.2289,-114.9556],[47.1837,-114.8653],[47.1264,-114.7889],[47.05,-114.7455],[47.0309,-114.7229],[47.0222,-114.6621],[47.0118,-114.65],[47.0066,-114.5701],[47.0205,-114.5319],[46.9997,-114.4763],[47.0014,-114.4416],[47.0448,-114.3687]]},{"n":"90","k":"hw","pts":[[47.6891,-116.7982],[47.6822,-116.7721],[47.6457,-116.7217],[47.6318,-116.687],[47.6231,-116.6436],[47.6196,-116.5255],[47.5918,-116.4717],[47.5814,-116.4265],[47.5727,-116.4144],[47.571,-116.3987],[47.5536,-116.3779],[47.5502,-116.3675],[47.5571,-116.3015],[47.5519,-116.2546],[47.5484,-116.1105],[47.5259,-116.0323],[47.4859,-115.9403],[47.472,-115.8934],[47.4651,-115.8378],[47.4685,-115.7406],[47.4529,-115.6676]]},{"n":"395","k":"us","pts":[[48.3768,-117.8557],[48.3438,-117.8436],[48.3264,-117.828],[48.316,-117.8106],[48.2986,-117.7394],[48.2847,-117.7168],[48.2656,-117.7081],[48.2257,-117.7186],[48.2049,-117.7186],[48.1736,-117.7116],[48.1493,-117.689],[48.1441,-117.663],[48.1076,-117.6317],[48.0208,-117.5935],[47.9947,-117.5692],[47.9947,-117.5536],[47.9739,-117.5154],[47.9357,-117.4806],[47.8905,-117.4476],[47.8402,-117.4216],[47.8246,-117.4199],[47.7968,-117.4233],[47.7846,-117.4112],[47.7777,-117.399],[47.7429,-117.406]]},{"n":"2","k":"us","pts":[[48.1858,-117.0395],[48.1753,-116.9579],[48.1788,-116.9006],[48.1562,-116.8294],[48.1753,-116.7582],[48.2552,-116.6731],[48.2552,-116.6054],[48.2709,-116.5533]]},{"n":"93","k":"us","pts":[[48.4011,-114.4468],[48.3942,-114.4208],[48.4011,-114.3912],[48.4046,-114.3339],[48.3716,-114.3322]]},{"n":"93","k":"us","pts":[[48.3716,-114.3322],[48.3507,-114.3357],[48.3073,-114.3287],[48.2396,-114.3409],[48.1997,-114.3305]]},{"n":"2","k":"us","pts":[[47.7429,-117.406],[47.7707,-117.3799],[47.7811,-117.3539],[47.8037,-117.3469],[47.8714,-117.3591],[47.8923,-117.3591],[47.9183,-117.3504],[48.0607,-117.3469],[48.0694,-117.3434],[48.0764,-117.3226],[48.0868,-117.3296],[48.0955,-117.3209],[48.0972,-117.2566],[48.1458,-117.1455],[48.158,-117.0951],[48.1719,-117.0795],[48.1858,-117.0395]]},{"n":"2","k":"us","pts":[[48.4758,-115.9055],[48.4515,-115.8673],[48.4515,-115.8291],[48.4601,-115.7857],[48.4567,-115.626],[48.3612,-115.5304],[48.3316,-115.5148],[48.2691,-115.5096],[48.257,-115.5009],[48.2396,-115.4783],[48.1962,-115.4454],[48.1684,-115.4332],[48.1285,-115.4262],[48.0694,-115.3742],[48.0295,-115.3498],[48.0243,-115.3273],[48.0312,-115.3047],[48.0625,-115.263],[48.0746,-115.2231],[48.0781,-115.1779],[48.0729,-115.1414],[48.0225,-115.0581],[48.0138,-115.032],[48.0173,-114.9921],[48.0451,-114.8636],[48.0416,-114.8375],[48.026,-114.8098],[48.0243,-114.7716],[48.0382,-114.7108],[48.0642,-114.6795],[48.0902,-114.6587],[48.1076,-114.6222],[48.0902,-114.5319],[48.1024,-114.4815],[48.1701,-114.4399],[48.1875,-114.4121],[48.1997,-114.3305]]},{"n":"2","k":"us","pts":[[47.6665,-117.8557],[47.6439,-117.7759],[47.6439,-117.6161],[47.6422,-117.5154],[47.637,-117.4702]]},{"n":"90","k":"hw","pts":[[47.6387,-117.4424],[47.6405,-117.4615],[47.637,-117.4702]]},{"n":"2","k":"us","pts":[[47.7429,-117.406],[47.7186,-117.4146],[47.6735,-117.4129],[47.6353,-117.4199]]},{"n":"90","k":"hw","pts":[[47.6353,-117.4199],[47.6387,-117.4424]]},{"n":"95","k":"us","pts":[[48.2483,-116.5467],[48.2413,-116.5446],[48.2135,-116.5464],[48.1892,-116.5689],[48.1684,-116.6002],[48.1232,-116.6158],[48.0694,-116.6419],[48.0347,-116.6419],[47.9791,-116.6957],[47.9183,-116.6992],[47.8419,-116.7478],[47.7985,-116.7912],[47.7759,-116.8051],[47.7516,-116.8051],[47.7221,-116.7964]]},{"n":"195","k":"us","pts":[[46.8903,-117.3643],[46.9042,-117.3521],[46.9198,-117.3469],[46.9302,-117.3365],[46.9719,-117.3226],[46.9788,-117.3365],[47.0049,-117.3591],[47.0709,-117.3712],[47.2098,-117.366],[47.2185,-117.3643],[47.248,-117.3382],[47.2619,-117.34],[47.2914,-117.3521],[47.3001,-117.3782],[47.3053,-117.3834],[47.3314,-117.373],[47.3591,-117.3695],[47.3713,-117.3921],[47.4251,-117.3799],[47.4442,-117.3834],[47.4738,-117.399],[47.5293,-117.4025],[47.5554,-117.3973],[47.5832,-117.4042],[47.6387,-117.4424]]},{"n":"95","k":"us","pts":[[46.8312,-117.0239],[46.8364,-117.0239],[46.8903,-116.9961],[46.918,-116.9423],[46.9424,-116.9319],[46.9684,-116.9336],[46.9788,-116.9232],[47.0049,-116.8815],[47.024,-116.8798],[47.0396,-116.8659],[47.0552,-116.8607],[47.0639,-116.8277],[47.0778,-116.8173],[47.09,-116.819],[47.1004,-116.8294],[47.1056,-116.8503],[47.156,-116.9197],[47.1733,-116.9353],[47.1942,-116.9371],[47.2289,-116.9284],[47.2636,-116.9145],[47.2845,-116.8971],[47.3175,-116.8919],[47.3279,-116.8954],[47.3418,-116.8867],[47.3904,-116.8833],[47.413,-116.9562],[47.4356,-116.9857],[47.4703,-117.0083],[47.4842,-117.0048],[47.5015,-116.9579],[47.5137,-116.951],[47.5311,-116.9284],[47.604,-116.8902],[47.6057,-116.8641],[47.6214,-116.8728],[47.6439,-116.8607],[47.6492,-116.8503],[47.6683,-116.8416],[47.6769,-116.8312],[47.6874,-116.7912],[47.7221,-116.7964]]},{"n":"2","k":"us","pts":[[48.441,-116.496],[48.4167,-116.5307],[48.3855,-116.5429],[48.3004,-116.555],[48.2709,-116.5533],[48.2483,-116.5467]]},{"n":"26","k":"us","pts":[[46.8218,-117.5294],[46.8352,-117.495],[46.8472,-117.483],[46.8621,-117.4456],[46.8651,-117.4247],[46.8756,-117.3978],[46.8905,-117.3814],[46.8905,-117.3649]]}],"borders":[[[46.9401,-117.04],[47.0917,-117.0415],[47.2556,-117.0415],[47.4203,-117.0415],[47.5718,-117.0429],[47.7372,-117.0429],[47.8931,-117.0429],[48.0548,-117.0429],[48.2122,-117.0372],[48.3589,-117.0349]],[[46.8662,-114.9183],[46.877,-114.9213],[46.8944,-114.9233],[46.9007,-114.9226],[46.9066,-114.9209],[46.9123,-114.9185],[46.9177,-114.9171],[46.9228,-114.9179],[46.9272,-114.924],[46.9378,-114.9489],[46.9426,-114.9574],[46.947,-114.9639],[46.9734,-114.9919],[46.978,-114.9987],[46.9809,-115.0051],[46.9845,-115.0249],[46.9887,-115.0394],[46.9928,-115.047],[46.9967,-115.0517],[46.9992,-115.0533],[47.001,-115.0542],[47.0192,-115.0588],[47.0243,-115.0611],[47.0928,-115.1504],[47.1161,-115.1647],[47.1428,-115.1921],[47.1502,-115.2034],[47.1636,-115.231],[47.1701,-115.2396],[47.1791,-115.2489],[47.1842,-115.2561],[47.1883,-115.2642],[47.1919,-115.2741],[47.1959,-115.2799],[47.2007,-115.2836],[47.2113,-115.2871],[47.2162,-115.29],[47.2211,-115.2941],[47.2267,-115.3005],[47.2318,-115.3046],[47.2461,-115.3142],[47.2582,-115.3253],[47.2644,-115.3333],[47.2685,-115.3417],[47.2934,-115.4318],[47.2998,-115.4822],[47.3041,-115.4968],[47.3082,-115.5047],[47.3127,-115.5101],[47.3259,-115.5202],[47.3399,-115.5286],[47.3565,-115.545],[47.3824,-115.5771],[47.3884,-115.5862],[47.4228,-115.6613],[47.4308,-115.7006],[47.4365,-115.7173],[47.4417,-115.724],[47.4471,-115.7267],[47.4517,-115.7248],[47.4554,-115.7221],[47.4573,-115.7194],[47.4598,-115.7145],[47.4613,-115.7079],[47.4641,-115.6653],[47.4655,-115.658],[47.4674,-115.6515],[47.47,-115.6456],[47.4742,-115.6413],[47.4793,-115.6392],[47.4858,-115.6431],[47.4903,-115.6522],[47.4954,-115.6677],[47.5,-115.678],[47.5008,-115.6786],[47.5215,-115.6844],[47.5324,-115.692],[47.5387,-115.7011],[47.5505,-115.7268],[47.5556,-115.7328],[47.5607,-115.7331],[47.5642,-115.7288],[47.5673,-115.7233],[47.5777,-115.6992],[47.5808,-115.6939],[47.5845,-115.6892],[47.5888,-115.685],[47.5989,-115.6789],[47.6045,-115.6765],[47.613,-115.6788],[47.6238,-115.6856],[47.6529,-115.713],[47.6611,-115.7178],[47.6859,-115.7152],[47.6929,-115.7162],[47.6998,-115.7189],[47.7081,-115.7253],[47.7127,-115.7324],[47.7261,-115.7614],[47.7316,-115.7666],[47.7384,-115.7698],[47.7453,-115.7722],[47.7544,-115.7783],[47.7596,-115.7875],[47.7706,-115.8141],[47.7762,-115.8212],[47.7817,-115.8256],[47.8297,-115.8446],[47.8357,-115.8486],[47.8439,-115.855],[47.8489,-115.863],[47.8587,-115.8867],[47.8651,-115.896],[47.8749,-115.9071],[47.8824,-115.9178],[47.8893,-115.9304],[47.8945,-115.937],[47.8995,-115.9414],[47.91,-115.9489],[47.933,-115.9737],[47.9483,-115.9855],[47.9733,-116.0148],[47.9879,-116.0369],[47.9974,-116.0455],[48.0037,-116.0489],[48.0531,-116.0489],[48.1706,-116.0488],[48.288,-116.0487],[48.4055,-116.0487]]],"town":{"streets":[{"n":"Sherman Ave","hw":1,"pts":[[47.67331,-116.7856],[47.67331,-116.7598]]},{"n":"Front Ave","hw":0,"pts":[[47.67261,-116.7841],[47.67261,-116.7633]]},{"n":"Lakeside Ave","hw":0,"pts":[[47.67432,-116.7856],[47.67432,-116.7648]]},{"n":"Coeur d'Alene Ave","hw":0,"pts":[[47.67519,-116.7856],[47.67519,-116.7704]]},{"n":"Indiana Ave","hw":0,"pts":[[47.67593,-116.7856],[47.67593,-116.7735]]},{"n":"Wallace Ave","hw":0,"pts":[[47.67677,-116.7856],[47.67677,-116.7718]]},{"n":"Garden Ave","hw":0,"pts":[[47.67758,-116.7908],[47.67758,-116.7675]]},{"n":"Foster Ave","hw":0,"pts":[[47.67827,-116.7851],[47.67827,-116.7735]]},{"n":"Pennsylvania Ave","hw":0,"pts":[[47.67929,-116.7752],[47.67929,-116.769]]},{"n":"Montana Ave","hw":0,"pts":[[47.68105,-116.7811],[47.68105,-116.7648]]},{"n":"Boyd Ave","hw":0,"pts":[[47.68175,-116.7752],[47.68175,-116.769]]},{"n":"Mullan Ave","hw":0,"pts":[[47.67201,-116.7767],[47.67201,-116.7648]]},{"n":"Young Ave","hw":0,"pts":[[47.67001,-116.7724],[47.67001,-116.7648]]},{"n":"Pine Ave","hw":0,"pts":[[47.66913,-116.7724],[47.66913,-116.7648]]},{"n":"Ash Ave","hw":0,"pts":[[47.66729,-116.7724],[47.66729,-116.7648]]},{"n":"Lakeshore Dr","hw":0,"pts":[[47.66655,-116.7724],[47.66655,-116.7627]]},{"n":"1st St","hw":0,"pts":[[47.6733,-116.78551],[47.676,-116.78551]]},{"n":"2nd St","hw":0,"pts":[[47.6722,-116.7841],[47.682,-116.7841]]},{"n":"3rd St","hw":0,"pts":[[47.6706,-116.78251],[47.682,-116.78251]]},{"n":"4th St","hw":0,"pts":[[47.6726,-116.78106],[47.6832,-116.78106]]},{"n":"5th St","hw":0,"pts":[[47.6726,-116.77957],[47.68,-116.77957]]},{"n":"6th St","hw":0,"pts":[[47.6726,-116.77827],[47.679,-116.77827]]},{"n":"7th St","hw":0,"pts":[[47.672,-116.77673],[47.6815,-116.77673]]},{"n":"8th St","hw":0,"pts":[[47.672,-116.77521],[47.68,-116.77521]]},{"n":"9th St","hw":0,"pts":[[47.672,-116.77375],[47.679,-116.77375]]},{"n":"10th St","hw":0,"pts":[[47.6668,-116.77241],[47.679,-116.77241]]},{"n":"11th St","hw":0,"pts":[[47.6666,-116.77063],[47.68,-116.77063]]},{"n":"12th St","hw":0,"pts":[[47.6666,-116.76955],[47.68,-116.76955]]},{"n":"13th St","hw":0,"pts":[[47.6666,-116.76772],[47.68,-116.76772]]},{"n":"14th St","hw":0,"pts":[[47.6666,-116.7659],[47.68,-116.7659]]},{"n":"15th St","hw":0,"pts":[[47.6666,-116.76484],[47.6832,-116.76484]]},{"n":"16th St","hw":0,"pts":[[47.6708,-116.76332],[47.6765,-116.76332]]},{"n":"Government Way","hw":0,"pts":[[47.6761,-116.78636],[47.6832,-116.78636]]},{"n":"A St","hw":0,"pts":[[47.6785,-116.78746],[47.682,-116.78746]]},{"n":"Lincoln Way","hw":1,"pts":[[47.679,-116.79172],[47.6832,-116.79172]]},{"n":"Northwest Blvd","hw":1,"pts":[[47.67331,-116.7856],[47.67374,-116.78618],[47.67553,-116.78733],[47.67671,-116.78835],[47.67744,-116.78924],[47.67851,-116.79006],[47.67933,-116.79106],[47.68009,-116.7916],[47.6832,-116.795]]}],"shore":[[47.6752,-116.7965],[47.6742,-116.794],[47.6735,-116.792],[47.6731,-116.79],[47.6727,-116.7885],[47.6722,-116.7876],[47.6714,-116.7872],[47.6712,-116.7862],[47.6716,-116.7852],[47.6712,-116.784],[47.6706,-116.7832],[47.6702,-116.7826],[47.6696,-116.7832],[47.6686,-116.7845],[47.6672,-116.785],[47.6655,-116.7838],[47.664,-116.7815],[47.6633,-116.779],[47.6638,-116.7765],[47.665,-116.7745],[47.6662,-116.7735],[47.6668,-116.7727],[47.6662,-116.7712],[47.6659,-116.769],[47.6657,-116.766],[47.6655,-116.763],[47.6652,-116.7598]],"tubbs":[[47.6702,-116.7826],[47.6696,-116.7832],[47.6686,-116.7845],[47.6672,-116.785],[47.6655,-116.7838],[47.664,-116.7815],[47.6633,-116.779],[47.6638,-116.7765],[47.665,-116.7745],[47.6662,-116.7735],[47.6668,-116.7727],[47.6688,-116.7738],[47.67,-116.7752]],"loop":[[47.66953,-116.78186],[47.66905,-116.78234],[47.66825,-116.78338],[47.66713,-116.78378],[47.66577,-116.78282],[47.66457,-116.78098],[47.66401,-116.77898],[47.66441,-116.77698],[47.66537,-116.77538],[47.66633,-116.77458],[47.66681,-116.77394],[47.66841,-116.77482],[47.66937,-116.77594]],"mceuen":[[47.6724,-116.7824],[47.6724,-116.777],[47.6716,-116.777],[47.67,-116.7752],[47.6702,-116.7826]],"citypark":[[47.6745,-116.7935],[47.6748,-116.79],[47.674,-116.7872],[47.6727,-116.787],[47.6722,-116.7876],[47.6727,-116.7885],[47.6731,-116.79],[47.6735,-116.792],[47.6741,-116.7935]],"venues":[{"id":"hudsons","n":"Hudson's Hamburgers","addr":"207 E Sherman Ave","ll":[47.67344,-116.78399],"kind":"lunch"},{"id":"row","n":"ROW Adventure Center","addr":"202 E Sherman Ave","ll":[47.67318,-116.78407],"kind":"raft"},{"id":"titos","n":"Tito's Italian Grill","addr":"210 E Sherman Ave","ll":[47.67306,-116.78382],"kind":"dinner"},{"id":"collective","n":"Collective Kitchen","addr":"501 Sherman Ave","ll":[47.67344,-116.77956],"kind":"dinner"},{"id":"fire","n":"Fire Artisan Pizza","addr":"Sherman Ave near 6th St","ll":[47.67344,-116.77879],"kind":"dinner"},{"id":"moontime","n":"Moon Time","addr":"1602 E Sherman Ave","ll":[47.67318,-116.76325],"kind":"dinner"},{"id":"jimmys","n":"Jimmy's Down the Street","addr":"1613 E Sherman Ave","ll":[47.67344,-116.76312],"kind":"breakfast"},{"id":"resort","n":"The Coeur d'Alene Resort and cruise dock","addr":"115 S 2nd St","ll":[47.67215,-116.7844],"kind":"info"},{"id":"tubbs","n":"Tubbs Hill trailhead","addr":"210 S 3rd St","ll":[47.67035,-116.78235],"kind":"trail"},{"id":"mceuenlot","n":"McEuen Park parking","addr":"3rd St and Front Ave","ll":[47.67175,-116.7815],"kind":"info"},{"id":"beach","n":"City Beach","addr":"City Park","ll":[47.67285,-116.7896],"kind":"swim"},{"id":"etubbs","n":"East Tubbs Hill Park","addr":"982 E Lakeshore Dr","ll":[47.66685,-116.7729],"kind":"trail"},{"id":"angelos","n":"Angelo's Ristorante","addr":"846 N 4th St","ll":[47.67941,-116.78094],"kind":"dinner"}]},"sketch":{"spokane":[[47.676,-116.801],[47.69,-116.845],[47.703,-116.9],[47.7085,-116.955],[47.699,-117.04],[47.695,-117.12],[47.688,-117.22],[47.678,-117.3],[47.685,-117.36],[47.662,-117.425],[47.68,-117.47],[47.745,-117.53],[47.79,-117.57]],"roads":[{"n":"ID-200","pts":[[48.2761,-116.5515],[48.305,-116.535],[48.312,-116.48],[48.29,-116.4],[48.2424,-116.3],[48.215,-116.25],[48.175,-116.215],[48.1467,-116.1767],[48.105,-116.05],[48.07,-115.97]]},{"n":"ID-97","pts":[[47.63,-116.626],[47.615,-116.64],[47.6091,-116.6443],[47.6,-116.668],[47.58,-116.7],[47.545,-116.735],[47.5088,-116.7538],[47.4535,-116.7836]]}],"hiawatha":[[47.3955,-115.6347],[47.3786,-115.6655],[47.368,-115.695],[47.3523,-115.735]]},"run":[[47.0282,-114.5793],[47.0332,-114.5906],[47.0349,-114.6148],[47.0225,-114.6627],[47.0189,-114.6871],[47.0247,-114.7108],[47.0394,-114.7247]],"places":{"cyr":[47.0282,-114.5793],"tarkio":[47.0394,-114.7247]}};
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+  function fmt(n){return '$'+Math.round(n).toLocaleString('en-US');}
+  function store(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  function read(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}}
+
+
+  // ---------- Places ----------
+  var P={
+    geg:{n:'Spokane International Airport (GEG)',ll:[47.6199,-117.5338],t:'Fly in here. Coeur d’Alene has no commercial flights. About 40 to 45 minutes to downtown on I-90.'},
+    town:{n:'Downtown Coeur d’Alene',ll:[47.6733,-116.7841],t:'Home base. Sherman Avenue restaurants, Tubbs Hill and the beaches are all within a short walk.'},
+    mineral:{n:'Mineral Ridge trailhead',ll:[47.6091,-116.6443],t:'3.3-mile loop above Beauty Bay. Paved lot, pit toilets, drinking water, no fee. I-90 exit 22, then 3 miles south on ID-97.'},
+    scotchTH:{n:'Scotchman Peak trailhead',ll:[48.16443,-116.09832],t:'End of Forest Road 2294A, above Clark Fork. Small lot, no pass, no water. Coordinates from Friends of Scotchman Peaks.'},
+    scotch:{n:'Scotchman Peak · 7,009 ft',ll:[48.1886,-116.0817],t:'Old fire lookout site with views over Lake Pend Oreille and into Montana. Pin location is approximate.'},
+    stevTH:{n:'Stevens Lakes trailhead',ll:[47.45426,-115.76645],t:'About a mile up Willow Creek Road from I-90 exit 69, East Mullan. Leave nothing visible in the car.'},
+    stevUp:{n:'Upper Stevens Lake · about 5,740 ft',ll:[47.4280,-115.7625],t:'The smaller, higher lake under Stevens Peak. Pin location is approximate.'},
+    wallace:{n:'Wallace',ll:[47.4742,-115.9269],t:'Compact historic silver-mining town right on I-90. A good lunch stop on the way back from Stevens Lakes or the Hiawatha.'},
+    superior:{n:'ROW meeting point, Superior, Montana',ll:[47.1916,-114.8918],t:'150 River St. Park on River Street and meet behind the Old School House building at 9:00 AM Pacific, which is 10:00 AM on local Montana clocks.'},
+    cyr:{n:'Alberton Gorge, upper end',ll:GEO.places.cyr,t:'The whitewater starts near Cyr, off I-90 exit 70. ROW drives you from Superior. Pin location is approximate.'},
+    tarkio:{n:'Alberton Gorge, lower end',ll:GEO.places.tarkio,t:'The gorge ends near Tarkio, about 10 river miles down. Pin location is approximate.'},
+    eportal:{n:'Route of the Hiawatha · East Portal',ll:[47.3955,-115.6347],t:'Start of the ride, 2 miles of gravel from I-90 exit 5 at Taft, Montana. Big lot, two restrooms, reserved bike pickup. Pin location is approximate.'},
+    pearson:{n:'Pearson · end of the Hiawatha',ll:[47.3523,-115.7350],t:'14.4 miles down the trail. The shuttle leaves from here. Pin location is approximate.'},
+    spokane:{n:'Downtown Spokane',ll:[47.6600,-117.4250],t:'The Spokane River float runs through the city. Riverfront Park and Spokane Falls are next to downtown.'},
+    cedars:{n:'Cedars Floating Restaurant',ll:[47.6790,-116.8040],t:'1514 S Marina Dr on Blackwell Island, a few minutes west of downtown across the Spokane River. Off the Downtown map. Pin location is approximate.',intown:1,kind:'dinner'},
+    anthonys:{n:'Anthony’s at Coeur d’Alene',ll:[47.6938,-116.8085],t:'1926 W Riverstone Dr, on Riverstone Pond, about 2 miles northwest of downtown. Off the Downtown map. Pin location is approximate.',intown:1,kind:'dinner'},
+    ten6:{n:'Ten/6',ll:[47.6912,-116.7862],t:'1705 N Government Way, about a mile north of downtown. Off the Downtown map. Open Wednesday to Sunday, 8 AM to 3 PM.',intown:1,kind:'breakfast'}
+  };
+  (function(){
+    var T={dinner:'One of the dinner picks.',breakfast:'Breakfast and lunch only.',lunch:'Lunch stop.',raft:'Books ROW day trips in person.',info:'',trail:'',swim:''};
+    var X={hudsons:'Burgers and pie at the counter since 1907. Cash only, no fries. Closed Sundays and closes in the late afternoon.',
+      row:'Walk-in storefront for ROW day trips: rafting, floats and guided rides. 208-770-2517.',
+      titos:'Italian on Sherman Avenue. One of the Night 1 picks.',collective:'One of the Night 2 picks.',
+      fire:'Wood-fired pizza. Open to 9 PM Sunday through Thursday and 10 PM Friday and Saturday. Placed by block, so the pin is approximate.',
+      moontime:'Casual neighborhood spot at the east end of Sherman. One of the Night 2 picks.',
+      jimmys:'Breakfast and lunch only. Known for pecan rolls.',
+      resort:'The lakefront hotel, the floating boardwalk and marina, and the dock for the 90-minute scenic cruises. Pin location is approximate.',
+      tubbs:'Main trailhead for the 2.2-mile loop, at the southwest corner of McEuen Park by the 3rd Street boat launch. Pin location is approximate.',
+      mceuenlot:'Pay parking for Tubbs Hill and downtown. Pin location is approximate.',
+      beach:'Sandy public beach along City Park, a short walk west of the resort. Pin location is approximate.',
+      etubbs:'Small lot, restrooms and the east trailhead for Tubbs Hill, at the south end of 10th Street. Pin location is approximate.',
+      angelos:'Italian made from scratch. Reservations recommended. 208-765-2850.'};
+    GEO.town.venues.forEach(function(v){P[v.id]={n:v.n,ll:v.ll,t:v.addr+'. '+(X[v.id]||T[v.kind]||''),intown:1,kind:v.kind};});
+  })();
+  var DPIN={'Cedars Floating Restaurant':'cedars','Tito’s Italian Grill':'titos','Fire Artisan Pizza':'fire','Collective Kitchen':'collective','Moon Time':'moontime','Anthony’s at Coeur d’Alene':'anthonys','Angelo’s Ristorante':'angelos'};
+  function dpin(n){return DPIN[n]||'town';}
+  var VIEWS=GEO.views;
+  (function(){
+    function mk(id,L0,L1,O0,O1){var kx=(O1-O0)*111.32*Math.cos((L0+L1)/2*Math.PI/180),ky=(L1-L0)*110.95;VIEWS[id]={w:960,h:Math.round(960*ky/kx),L0:L0,L1:L1,O0:O0,O1:O1};}
+    mk('west',47.40,47.98,-117.72,-116.48); mk('north',47.55,48.42,-117.05,-115.85); mk('valley',47.22,47.86,-116.95,-115.50); mk('east',46.90,47.82,-116.95,-114.40);
+  })();
+  function px(view,ll){var v=VIEWS[view];return [(ll[1]-v.O0)/(v.O1-v.O0)*(v.w-1),(v.L1-ll[0])/(v.L1-v.L0)*(v.h-1)];}
+  function inView(view,ll){var v=VIEWS[view];return ll[0]>v.L0&&ll[0]<v.L1&&ll[1]>v.O0&&ll[1]<v.O1;}
+  function pathD(view,pts){return pts.map(function(p,i){var q=px(view,p);return (i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1);}).join(' ');}
+
+  // ---------- Options ----------
+  var HIKES={
+    scotch:{name:'Scotchman Peak',sub:'Big summit day',lvl:5,mi:8,gain:3700,hrs:'5–7',top:'7,009 ft',topFt:7009,
+      note:'The hardest and best view in this plan: 3,700 ft of climbing in 4 miles to a summit over Lake Pend Oreille, with mountain goats on top. There is no water on the trail and the lower half is in full sun, so start early. It is also a long drive, about 1 hour 50 minutes each way.'},
+    stevens:{name:'Stevens Lakes',sub:'Two alpine lakes',lvl:3,mi:5,gain:1780,hrs:'3–4',top:'about 5,740 ft',topFt:5740,
+      note:'Short and steep to two lakes under Stevens Peak, with a creek crossing and a waterfall on the way. Published mileage runs from 5 to 6.4 miles round trip to the upper lake. An hour from town and right off I-90. A good pick for a hot day.'},
+    mineral:{name:'Mineral Ridge',sub:'Easy loop + lake afternoon',lvl:2,mi:3.3,gain:700,hrs:'1.5–2',top:'about 2,850 ft',topFt:2850,
+      note:'A 3.3-mile loop 20 minutes from town with overlooks of Beauty Bay and Wolf Lodge Bay. Published gain ranges from about 580 to 770 ft. Pick this to save legs for the river and spend the afternoon on the lake.'}
+  };
+  var WP={
+    scotch:{oneway:4,pts:[
+      [0,3310,0,'Trailhead','Small lot at the end of Forest Road 2294A. No pass needed.'],
+      [1.4,4510,1200,'Top of the lower switchbacks','About thirty switchbacks through forest, gaining roughly 1,200 ft.'],
+      [2.3,5510,2200,'End of the ridge climb','The trail goes nearly straight up a ridge for 0.9 miles and another 1,000 ft.'],
+      [2.75,5900,2590,'Hillside meadow','Open slope with Lake Pend Oreille below. Little shade from here.'],
+      [3.5,6570,3260,'Loose rock begins','The last half mile is loose rock along the ridge. Poles help.'],
+      [4,7009,3700,'Scotchman Peak','Old fire lookout site. Give the goats plenty of room and never feed them.']]},
+    stevens:{oneway:2.5,pts:[
+      [0,3960,0,'Trailhead on the old railroad grade','Take Trail 165 to the left. Trail 138 on the right goes to Lone Lake.'],
+      [1.5,5050,1090,'Creek crossing and waterfall','A real stream crossing of the East Fork of Willow Creek. The steepest stretch comes next.'],
+      [1.85,5540,1580,'Lower Stevens Lake','The bigger lake. Good swim and lunch stop.'],
+      [2.5,5740,1780,'Upper Stevens Lake','Follow the narrow path along the west shore of the lower lake.']]},
+    mineral:{oneway:1.65,loop:1,top:1,pts:[
+      [0,2150,0,'Trailhead and picnic area','Paved lot, pit toilets, drinking water. No fee.'],
+      [1.65,2850,700,'Ridge-top overlooks','Views of Beauty Bay and Wolf Lodge Bay. Roughly the halfway point.'],
+      [3.3,2150,700,'Back at the trailhead','Downhill on the other side of the loop.']]}
+  };
+  var RIVERS={
+    clark:{name:'Clark Fork full day',sub:'Alberton Gorge, Class II–III, with ROW',price:140,miles:'10',
+      note:'ROW Adventures runs 13-foot paddle rafts for up to 7 guests and a guide, and everyone paddles. With 4 to 7 guys you can fill a boat yourselves. Lunch, wetsuit, splash jacket, booties, helmet and the shuttle to the river are included. ROW adds a 7% access fee and a 3% Montana use fee, and guide tips are separate. 2027 season: July 1 to August 29, daily from July 19.'},
+    spokane:{name:'Spokane River float',sub:'Easy half day, close to town',price:65,miles:'Float',
+      note:'A relaxed half-day guided float through Spokane, 35 to 45 minutes west. ROW describes the Spokane as a warm, gentle float by late July and August. Pick this if the group wants a short drive and a slow day. The $65 price is from a recent listing, so confirm it.'}
+  };
+  var LAST={
+    hiawatha:{name:'Route of the Hiawatha',sub:'Rail-trail ride, evening flight',cost:80,
+      note:'14.4 miles of gentle downhill on an old railroad grade: 10 tunnels, 7 high trestles, and the 1.66-mile Taft Tunnel to start. Reserve passes, the shuttle and bikes online. The $80 is the 2026 total for a rental bike, trail pass and shuttle. You go straight to the airport afterward, so book a flight that leaves after about 6:00 PM.'},
+    lake:{name:'Lake morning',sub:'Swim, brunch, afternoon flight',cost:38,
+      note:'An early swim or paddle, brunch at Ten/6, and a last walk on the water before a 45-minute drive to the airport. Works with flights from about 2:15 PM on. The $38 covers a half-day kayak rental, from a recent listing.'}
+  };
+  var DINNERS=[
+    {night:'Night 1',opts:[['Cedars Floating Restaurant',55],['Tito’s Italian Grill',32],['Fire Artisan Pizza',25]]},
+    {night:'Night 2, after the hike',opts:[['Fire Artisan Pizza',25],['Collective Kitchen',32],['Moon Time',24]]},
+    {night:'Night 3, send-off',opts:[['Anthony’s at Coeur d’Alene',50],['Angelo’s Ristorante',60],['Boiada Brazilian Grill',65]]}
+  ];
+  var DEF={day:0,pace:'relaxed',hike:'scotch',river:'clark',last:'hiawatha',dinner:[0,0,0],view:null,n:4,flight:450,lodge:'house',house:550,hotel:230,tax:15,car:125,food:40,start:'2027-07-22',crew:[],expenses:[]};
+  var SHARED=['start','pace','hike','river','last','dinner','n','flight','lodge','house','hotel','tax','car','food','crew','expenses'];
+  var S=Object.assign({},DEF,read('cda1-plan')||{});
+  function clean(){
+    if(!HIKES[S.hike])S.hike='scotch'; if(!RIVERS[S.river])S.river='clark'; if(!LAST[S.last])S.last='hiawatha';
+    if(!Array.isArray(S.crew))S.crew=[]; if(!Array.isArray(S.expenses))S.expenses=[];
+    if(!Array.isArray(S.dinner)||S.dinner.length!==3)S.dinner=[0,0,0];
+    S.dinner=S.dinner.map(function(v,i){return DINNERS[i].opts[v]?v:0;});
+    if(['relaxed','steady','fast'].indexOf(S.pace)<0)S.pace='relaxed';
+    if(!(S.day>=0&&S.day<4))S.day=0; if(S.view&&S.view!=='day'&&S.view!=='region'&&S.view!=='town')S.view=null;
+  }
+  clean();
+  // ---------- Shared sync (artifact database) ----------
+  var DB=null, docRef=null, canWrite=true, writing=false, pending=false, writeTimer=null, lastRemote='';
+  function sharedSnapshot(){var o={};SHARED.forEach(function(k){o[k]=S[k];});return o;}
+  function setSync(cls,txt){var p=document.getElementById('syncPill');p.className='sync '+cls;p.querySelector('span').textContent=txt;}
+  function pushShared(){
+    if(!docRef||!canWrite)return;
+    if(writing){pending=true;return;}
+    var body=sharedSnapshot(); var js=JSON.stringify(body); if(js===lastRemote)return;
+    writing=true;
+    docRef.set(body).then(function(){lastRemote=js;writing=false;setSync('on','Shared with your crew');if(pending){pending=false;pushShared();}})
+      .catch(function(e){writing=false;if(e&&e.code==='invalid_argument'){canWrite=false;setSync('ro','View only. Ask Alex for edit access to change the plan.');}else if(e&&e.code==='unavailable'){setTimeout(pushShared,1500+Math.random()*1000);}});
+  }
+  function save(){store('cda1-plan',S);if(docRef&&canWrite){clearTimeout(writeTimer);writeTimer=setTimeout(pushShared,700);}}
+  function applyRemote(d){
+    if(!d)return; var js=JSON.stringify(d); if(js===lastRemote)return; lastRemote=js;
+    SHARED.forEach(function(k){if(d[k]!==undefined)S[k]=d[k];});
+    if(!Array.isArray(S.crew))S.crew=[]; if(!Array.isArray(S.expenses))S.expenses=[];
+    store('cda1-plan',S); syncInputs(); renderAll();
+  }
+  function startSync(){
+    if(!window.claude||!window.claude.use)return;
+    window.claude.use('db').then(function(db){
+      if(!db)return; DB=db;
+      try{docRef=db.doc('trip/plan');}catch(e){return;}
+      setSync('','Connecting to shared plan…');
+      var t=setTimeout(function(){setSync('ro','Shared plan not reachable yet. Changes save in this browser.');},10000);
+      docRef.onSnapshot(function(snap){
+        clearTimeout(t);
+        if(snap.exists){applyRemote(snap.data());setSync('on','Shared with your crew');}
+        else{setSync('on','Shared with your crew');pushShared();}
+      },function(){clearTimeout(t);setSync('ro','Shared plan unavailable. Changes save in this browser.');});
+    }).catch(function(){});
+  }
+
+
+  // ---------- Day schedules ----------
+  function D(t,name,blurb,pin,cost,ft){return {t:t,name:name,blurb:blurb,pin:pin,cost:cost,ft:ft};}
+  var PACE={relaxed:{mph:1.8,up:40,n:'About 1.8 mph on the flat, plus 40 minutes per 1,000 ft climbed.'},steady:{mph:2.2,up:30,n:'About 2.2 mph on the flat, plus 30 minutes per 1,000 ft climbed.'},fast:{mph:2.8,up:20,n:'About 2.8 mph on the flat, plus 20 minutes per 1,000 ft climbed.'}};
+  var HSTART={scotch:435,stevens:500,mineral:580};
+  var TURN={scotch:[780,'1:00 PM','The top half has no shade or shelter, afternoons are hot, and you still have a long drive back.']};
+  function fmtT(m){m=Math.round(m/5)*5;var h=Math.floor(m/60)%24,mm=m%60;return (h%12||12)+':'+(mm<10?'0':'')+mm+' '+(h>=12?'PM':'AM');}
+  function parseT(t){var x=/^(\d+):(\d+) (AM|PM)$/.exec(t);if(!x)return null;return (+x[1]%12+(x[3]==='PM'?12:0))*60+ +x[2];}
+  function eta(key,i){var w=WP[key].pts[i],p=PACE[S.pace];return HSTART[key]+w[0]/p.mph*60+w[2]/1000*p.up;}
+  function hikeTimes(key){
+    var w=WP[key],last=w.pts.length-1;
+    if(w.loop)return {arr:eta(key,w.top),rest:30,back:eta(key,last)+30};
+    var arr=eta(key,last);
+    return {arr:arr,rest:45,back:arr+45+w.oneway/(PACE[S.pace].mph*1.25)*60};
+  }
+  function typTemp(min,ft){
+    var c=CLIMATE[dayDate(0).getUTCMonth()];if(!c||min==null)return null;
+    var h=min/60,H=c[0],L=c[1],f;if(h<6)h+=24;
+    f=h<=16?0.5-0.5*Math.cos(Math.PI*(h-6)/10):0.5+0.5*Math.cos(Math.PI*(h-16)/14);
+    return Math.round((L+(H-L)*f-3.5*Math.max(0,(ft-2200))/1000)/5)*5;
+  }
+  function drive(t,txt){return {t:t,name:txt,drive:true};}
+  function days(){
+    var h=HIKES[S.hike], r=RIVERS[S.river], l=LAST[S.last], d=S.dinner;
+    var d1=DINNERS[0].opts[d[0]][0], d2=DINNERS[1].opts[d[1]][0], d3=DINNERS[2].opts[d[2]][0];
+    var ht=hikeTimes(S.hike), day2, day3, day4;
+    if(S.hike==='scotch') day2=[
+      D('5:00 AM','Breakfast at the house','Eat well and fill every bottle. There is no water on this trail.'),
+      drive('5:25 AM','Leave town · about 1 hr 50 min. US-95 to Sandpoint, ID-200 to Clark Fork, then gravel forest roads'),
+      D('7:15 AM','Start up Trail 65','Steep from the first step. About thirty switchbacks in the first 1.4 miles.','scotchTH',null,3310),
+      D(fmtT(eta('scotch',1)),'Top of the lower switchbacks','About 1,200 ft done. The trail then heads nearly straight up a ridge.'),
+      D(fmtT(eta('scotch',3)),'Hillside meadow','Open slope with Lake Pend Oreille below. Full sun from here up.'),
+      D(fmtT(ht.arr),'Scotchman Peak','Lunch on the summit. Give the mountain goats plenty of room and never feed them.','scotch',null,7009),
+      D(fmtT(ht.arr+ht.rest),'Start down','Loose rock for the first half mile. Take it slowly.'),
+      D(fmtT(ht.back),'Back at the car','Cold drinks and food in Clark Fork or Sandpoint on the way home.','scotchTH'),
+      drive(fmtT(ht.back+20),'Drive back · about 1 hr 50 min'),
+      D(fmtT(Math.max(1170,ht.back+20+110+50)),d2,'Easy dinner after a big day.',dpin(d2))];
+    else if(S.hike==='stevens') day2=[
+      D('6:45 AM','Breakfast at the house','Pack lunch and a swimsuit for the lakes.'),
+      drive('7:15 AM','Leave town · about 1 hr. I-90 east to exit 69, East Mullan'),
+      D('8:20 AM','Stevens Lakes trailhead','Past the Lucky Friday Mine, then about a mile up Willow Creek Road. Leave nothing visible in the car.','stevTH',null,3960),
+      D(fmtT(eta('stevens',1)),'Creek crossing and waterfall','About 1.5 miles in. The steepest stretch comes right after.'),
+      D(fmtT(eta('stevens',2)),'Lower Stevens Lake','The bigger of the two lakes. Good swim on a hot day.'),
+      D(fmtT(ht.arr),'Upper Stevens Lake','Lunch under Stevens Peak.','stevUp',null,5740),
+      D(fmtT(ht.back),'Back at the car','','stevTH'),
+      D(fmtT(ht.back+30),'Late lunch in Wallace','Historic mining town, a few minutes west on I-90.','wallace'),
+      drive(fmtT(ht.back+105),'Drive back · about 50 min'),
+      D('7:30 PM',d2,'Dinner in town.',dpin(d2))];
+    else day2=[
+      D('8:00 AM','Breakfast at Jimmy’s Down the Street','Breakfast and lunch only. Known for pecan rolls.','jimmys'),
+      drive('9:15 AM','Drive to Mineral Ridge · about 20 min. I-90 east to exit 22, then 3 miles south on ID-97'),
+      D('9:40 AM','Mineral Ridge trailhead','Paved lot, pit toilets and picnic shelters. No fee.','mineral',null,2150),
+      D(fmtT(ht.arr),'Ridge-top overlooks','Beauty Bay on one side, Wolf Lodge Bay on the other.'),
+      D(fmtT(ht.back),'Back at the car','','mineral'),
+      D('12:45 PM','Lunch downtown','Hudson’s if you skipped it on Day 1, or pizza at Fire.','hudsons'),
+      D('2:30 PM','Lake afternoon','The 90-minute scenic cruise from the resort dock, or rent kayaks and paddle along Tubbs Hill.','resort'),
+      D('7:30 PM',d2,'Dinner in town.',dpin(d2))];
+    if(S.river==='clark') day3=[
+      D('6:15 AM','Breakfast at the house','Lunch on the river is included.'),
+      drive('6:45 AM','Leave town · 105 miles, a little under 2 hours on I-90 over Fourth of July and Lookout passes'),
+      D('8:45 AM','Arrive in Superior, Montana','150 River St. Park on River Street. Your phone will read 9:45 because Montana is on Mountain time.','superior'),
+      D('9:00 AM','Meet your ROW guides','Behind the Old School House building. Wetsuit, splash jacket, booties and helmet are handed out, then ROW drives you to the launch.','superior',fmt(r.price)),
+      D('Morning','On the water in Alberton Gorge','10 river miles and 5 to 6 hours in a roadless canyon with rose-colored cliffs and big wave trains.','cyr'),
+      D('Midday','Riverside lunch','Included, with water and sparkling water.'),
+      D('Afternoon','Tumbleweed, Boat Eater and Fang','The Lower Gorge. American Whitewater rates Tumbleweed Class III and calls it likely the hardest rapid on the run.','tarkio'),
+      D('4:30 PM','Back in Superior','ROW lists the return as 4:30 to 5:00 PM Pacific.','superior'),
+      drive('5:00 PM','Drive back · about 2 hours'),
+      D('7:45 PM',d3,'Send-off dinner. Book for 7:45 or later.',dpin(d3))];
+    else day3=[
+      D('8:30 AM','Breakfast at Jimmy’s Down the Street','Breakfast and lunch only. Known for pecan rolls.','jimmys'),
+      drive('10:15 AM','Drive to Spokane · about 40 min west on I-90'),
+      D('11:00 AM','Half-day Spokane River float','A relaxed guided float through the city. Your outfitter sets the exact time and meeting place, so this slot is a placeholder.','spokane',fmt(r.price)),
+      D('2:30 PM','Late lunch in Spokane','Walk through Riverfront Park to see Spokane Falls before you head back.','spokane'),
+      drive('4:00 PM','Drive back · about 40 min'),
+      D('5:00 PM','Swim at City Beach','Or a lap of Tubbs Hill if anyone has energy left.','beach'),
+      D('7:45 PM',d3,'Send-off dinner.',dpin(d3))];
+    var st=sunTimes(dayDate(3));
+    if(S.last==='hiawatha') day4=[
+      D('6:15 AM','Pack up and check out','Everything goes in the SUV. You do not come back through town.'),
+      drive('6:45 AM','Leave town · about 1 hr 15 min. I-90 east to exit 5 at Taft, Montana, then 2 miles of gravel'),
+      D('8:15 AM','East Portal trailhead','Pick up your reserved bikes and lights. Big lot and two restrooms.','eportal','about $'+l.cost),
+      D('8:30 AM','Ride the Route of the Hiawatha','Straight into the 1.66-mile Taft Tunnel, then 14.4 miles gently downhill over 7 high trestles and through 10 tunnels.','eportal'),
+      D('11:30 AM','Pearson, end of the trail','Most riders take 2.5 to 3.5 hours. The shuttle wait averages about 45 minutes.','pearson'),
+      D('12:30 PM','Shuttle, then back through the tunnel','A 30-minute shuttle to Roland, then 15 to 20 minutes through the tunnel to your car.'),
+      D('1:30 PM','Late lunch in Wallace','About 25 minutes west on I-90, on the way to the airport.','wallace'),
+      drive('2:30 PM','Drive to Spokane airport · about 1 hr 30 min'),
+      D('4:15 PM','Return the SUV, fly home','This day needs a flight that leaves after about 6:00 PM.','geg')];
+    else day4=[
+      D('6:30 AM','Early swim or paddle','Sunrise is '+st.rise+'. The lake is calmest early. Start from City Beach.','beach'),
+      D('8:30 AM','Brunch at Ten/6','New Orleans-style breakfast and beignets. Open Wednesday to Sunday. Reserve a table.','ten6'),
+      D('10:00 AM','Pack up and check out',''),
+      D('10:30 AM','Last walk on the lake','The floating boardwalk at the resort, or one more lap of Tubbs Hill.','resort'),
+      drive('11:45 AM','Drive to Spokane airport · about 45 min'),
+      D('12:45 PM','Return the SUV, fly home','Works with flights from about 2:15 PM on.','geg')];
+    return [
+      {label:'Day 1',tag:'Fly in + Tubbs Hill',view:'west',note:'cash',items:[
+        D('12:45 PM','Land in Spokane','There are no nonstops from Austin, so plan one connection. You gain two hours flying west.','geg'),
+        D('1:15 PM','Pick up the SUV','July is the priciest month for rentals here, so reserve early.','geg'),
+        drive('1:30 PM','Drive to Coeur d’Alene · 40 to 45 min east on I-90'),
+        D('2:30 PM','Late lunch at Hudson’s Hamburgers','Counter seats, burgers and pie since 1907. Cash only, no fries.','hudsons'),
+        D('3:30 PM','Check in and stock up','Breakfast food, trail food and plenty of water bottles for the next two days.','town'),
+        D('4:45 PM','Tubbs Hill loop','2.2 miles around a forested peninsula right off downtown. Side paths drop to swimming coves.','tubbs',null,2150),
+        D('6:15 PM','Swim, then clean up','Jump in at a Tubbs Hill cove or City Beach.','beach'),
+        D('7:45 PM',d1,'First dinner. Book ahead in July.',dpin(d1))]},
+      {label:'Day 2',tag:h.name,view:{scotch:'north',stevens:'valley',mineral:'west'}[S.hike],note:S.hike==='scotch'?'heat':null,items:day2},
+      {label:'Day 3',tag:r.name,view:S.river==='clark'?'east':'west',note:S.river==='clark'?'tz':null,items:day3},
+      {label:'Day 4',tag:l.name+' + fly home',view:S.last==='hiawatha'?'valley':'west',note:S.last==='hiawatha'?'flight':null,items:day4}
+    ];
+  }
+  var NOTES={
+    cash:'<div class="callout"><b>Bring cash:</b><span>Hudson’s does not take cards. It is closed Sundays and closes in the late afternoon, so check the hours for your arrival day.</span></div>',
+    heat:'<div class="callout"><b>Heat and water:</b><span>There is no water on the Scotchman trail and the first two miles are on a sunny, exposed slope. Carry at least 3 liters each and be climbing by 7:15.</span></div>',
+    tz:'<div class="callout"><b>Time zone:</b><span>ROW gives the 9:00 AM meeting time in Pacific time. Superior is on Mountain time, so clocks there will read 10:00 AM. Confirm the time when you book.</span></div>',
+    flight:'<div class="callout"><b>Flight:</b><span>This day ends at the airport around 4:15 PM. Book a flight home that leaves after about 6:00 PM, or pick the lake morning instead.</span></div>'
+  };
+
+  // ---------- Map ----------
+  var svg=document.getElementById('map');
+  var curView='region';
+  function viewFor(){var dv=days()[S.day].view;return (!S.view||S.view==='day')?dv:S.view;}
+  function drawMap(){
+    var view=viewFor(); curView=view; var v=VIEWS[view]; var k=v.w/440;
+    svg.innerHTML=''; svg.setAttribute('viewBox','0 0 '+v.w+' '+v.h);
+    var leg=[], post=[];
+    function line(pts,style){return el('path',Object.assign({d:pathD(view,pts),fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},style),svg);}
+    function poly(pts,style){return el('path',Object.assign({d:pathD(view,pts)+' Z'},style),svg);}
+    function label(txt,ll,o){o=o||{};var q=px(view,ll);var t=el('text',{x:q[0]+(o.dx||0)*k,y:q[1]+(o.dy||0)*k,'font-size':(o.s||12)*k,'text-anchor':o.a||'middle','class':'lbl','stroke-width':3.2*k,'letter-spacing':o.ls||'.02em'},svg);if(o.f)t.style.fill=o.f;if(o.it)t.setAttribute('font-style','italic');if(o.rot)t.setAttribute('transform','rotate('+o.rot+' '+q[0]+' '+q[1]+')');t.textContent=txt;return t;}
+    if(view!=='town'){
+      var full=view==='region', RG=VIEWS.region, i0=px(view,[RG.L1,RG.O0]), i1=px(view,[RG.L0,RG.O1]);
+      el('rect',{x:0,y:0,width:v.w,height:v.h,fill:'var(--surface-2)'},svg);
+      el('image',{href:'maps/region-light.jpg',x:i0[0],y:i0[1],width:i1[0]-i0[0],height:i1[1]-i0[1],'class':'img-light',preserveAspectRatio:'none'},svg);
+      el('image',{href:'maps/region-dark.jpg',x:i0[0],y:i0[1],width:i1[0]-i0[0],height:i1[1]-i0[1],'class':'img-dark',preserveAspectRatio:'none'},svg);
+      GEO.borders.forEach(function(b){line(b,{stroke:'var(--ink)','stroke-width':1*k,'stroke-dasharray':(7*k)+' '+(3*k)+' '+(1.5*k)+' '+(3*k),opacity:.55});});
+      GEO.rivers.forEach(function(r){var big=r.n==='Clark Fork'||r.n==='Pend Oreille';line(r.pts,{stroke:'var(--glacier)','stroke-width':(big?2:1.2)*k,opacity:.9});});
+      line(GEO.sketch.spokane,{stroke:'var(--glacier)','stroke-width':1.4*k,opacity:.9,'stroke-dasharray':(4*k)+' '+(2.5*k)});
+      GEO.lakes.forEach(function(l){poly(l.pts,{fill:'var(--glacier)','fill-opacity':.5,stroke:'var(--glacier)','stroke-width':1*k});});
+      GEO.roads.forEach(function(r){var hw=r.k==='hw';line(r.pts,{stroke:'var(--halo)','stroke-width':(hw?4:2.8)*k});});
+      GEO.roads.forEach(function(r){var hw=r.k==='hw';line(r.pts,{stroke:'var(--road)','stroke-width':(hw?2:1.1)*k});});
+      GEO.sketch.roads.forEach(function(r){line(r.pts,{stroke:'var(--halo)','stroke-width':2.6*k});line(r.pts,{stroke:'var(--road)','stroke-width':1*k,'stroke-dasharray':(4*k)+' '+(3*k)});});
+      var runOn=S.day===2&&S.river==='clark', hiOn=S.day===3&&S.last==='hiawatha';
+      line(GEO.run,{stroke:'var(--halo)','stroke-width':5.5*k});line(GEO.run,{stroke:runOn?'var(--accent)':'var(--glacier)','stroke-width':3*k});
+      line(GEO.sketch.hiawatha,{stroke:'var(--halo)','stroke-width':4*k});line(GEO.sketch.hiawatha,{stroke:hiOn?'var(--accent)':'var(--ink)','stroke-width':1.8*k,'stroke-dasharray':(3*k)+' '+(2.5*k)});
+      leg.push(['var(--road)','Highways (dashed = sketched)']);leg.push(['var(--glacier)','Lakes and rivers (dashed = sketched)']);leg.push(['var(--accent)','Today’s stops and route']);leg.push(['var(--ink)','State lines']);
+      function lab(txt,ll,o){if(inView(view,ll))return label(txt,ll,o);}
+      function town(n,ll,o){if(!inView(view,ll))return;var q=px(view,ll);el('circle',{cx:q[0],cy:q[1],r:2.4*k,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.1*k},svg);label(n,ll,Object.assign({s:8.6},o));}
+      lab('COEUR D’ALENE',P.town.ll,{s:10.5,a:'start',dx:9,dy:14,ls:'.06em'});
+      [[1,'Spokane',[47.659,-117.426],{a:'start',dx:6,dy:12,s:10}],[1,'Post Falls',[47.7144,-116.9396],{a:'middle',dy:-7}],[2,'Hayden',[47.7598,-116.7866],{a:'start',dx:6,dy:3}],
+       [2,'Rathdrum',[47.8172,-116.8663],{a:'end',dx:-6,dy:3}],[2,'Athol',[47.9345,-116.7025],{a:'start',dx:6,dy:3}],[1,'Sandpoint',[48.2761,-116.5515],{a:'end',dx:-6,dy:-4,s:9.4}],
+       [2,'Priest River',[48.1805,-116.9125],{a:'middle',dy:12}],[2,'Hope',[48.2424,-116.30],{a:'start',dx:6,dy:-3}],
+       [1,'Clark Fork',[48.1467,-116.1767],{a:'end',dx:-6,dy:11}],[2,'Harrison',[47.4535,-116.7836],{a:'end',dx:-6,dy:3}],[1,'St. Maries',[47.3144,-116.5627],{a:'start',dx:6,dy:3}],
+       [1,'Kellogg',[47.5380,-116.1193],{a:'middle',dy:-7}],[1,'Wallace',[47.4742,-115.9269],{a:'middle',dy:12}],[2,'Mullan',[47.4691,-115.8018],{a:'middle',dy:-7}],
+       [1,'Superior',[47.1916,-114.8918],{a:'end',dx:-7,dy:10,s:9.4}],[2,'St. Regis',[47.2985,-115.1010],{a:'end',dx:-6,dy:3}],[1,'Alberton',[47.0016,-114.4741],{a:'end',dx:-4,dy:-7}],
+       [2,'Thompson Falls',[47.5957,-115.3432],{a:'start',dx:6,dy:3}],[2,'Plummer',[47.3352,-116.8881],{a:'end',dx:-6,dy:3}]]
+        .forEach(function(a){if(a[0]===1||!full)town(a[1],a[2],a[3]);});
+      [[1,'Lake Coeur d’Alene',[47.52,-116.865],8.6,-80],[1,'Lake Pend Oreille',[48.085,-116.44],9,0],[1,'Clark Fork',[47.335,-114.99],8.4,0],[2,'Clark Fork',[48.075,-115.93],8,0],
+       [2,'St. Joe River',[47.255,-116.30],8,0],[2,'Spokane River',[47.745,-117.10],8,0],[2,'Pend Oreille River',[48.215,-117.25],8,0],[1,'Alberton Gorge',[46.975,-114.655],8.6,0]]
+        .forEach(function(a){if(a[0]===1||!full)lab(a[1],a[2],{s:a[3],it:1,f:a[1]==='Alberton Gorge'&&runOn?'var(--accent)':'var(--glacier)',rot:a[4]||0});});
+      [[1,'SELKIRK MOUNTAINS',[48.36,-116.95],-12,8],[1,'CABINET MOUNTAINS',[48.30,-115.55],-28,8.6],[2,'COEUR D’ALENE MOUNTAINS',[47.85,-116.08],-18,8],[1,'BITTERROOT RANGE',[47.16,-115.38],-36,8.6],[2,'ST. JOE MOUNTAINS',[47.36,-116.02],-6,8]]
+        .forEach(function(a){if(a[0]===1||!full)lab(a[1],a[2],{s:a[4],ls:'.16em',rot:a[3]});});
+      lab('WASHINGTON',[47.95,-117.42],{s:8.4,ls:'.22em'});lab('IDAHO',[46.925,-116.25],{s:8.4,ls:'.22em'});lab('IDAHO',[47.92,-116.30],{s:8.4,ls:'.22em'});lab('MONTANA',[47.80,-114.86],{s:8.4,ls:'.22em'});lab('MONTANA',[47.66,-115.60],{s:8.4,ls:'.22em'});
+      [['I-90',[47.553,-116.40]],['I-90',[47.645,-117.20]],['I-90',[47.30,-115.27]],['US-95',[47.99,-116.63]],['US-95',[47.20,-116.93]],['US-2',[48.13,-117.30]],['ID-200',[48.325,-116.42]],['ID-97',[47.565,-116.665]]]
+        .forEach(function(a){if(!inView(view,a[1]))return;var q=px(view,a[1]),w=(a[0].length*4.6+6)*k;el('rect',{x:q[0]-w/2,y:q[1]-5.5*k,width:w,height:11*k,rx:2.5*k,fill:'var(--surface)',stroke:'var(--road)','stroke-width':.8*k},svg);var t=el('text',{x:q[0],y:q[1]+2.9*k,'font-size':7.4*k,'text-anchor':'middle','font-weight':800,fill:'var(--ink)'},svg);t.textContent=a[0];});
+      [['Scotchman Peak',P.scotch.ll,'start',full],['Lookout Pass',[47.4560,-115.6970],'start',false],['Fourth of July Pass',[47.6225,-116.5119],'start',false]]
+        .forEach(function(a){if(!inView(view,a[1])||(full&&!a[3]))return;var q=px(view,a[1]),r=2.8*k;el('path',{d:'M'+(q[0]-r)+' '+(q[1]+r*.8)+' l'+r+' '+(-r*1.8)+' l'+r+' '+(r*1.8)+'z',fill:'var(--ink)'},svg);label(a[0],a[1],{s:8,a:a[2],dx:6,dy:-5});});
+      lab('Hiawatha trail',[47.34,-115.665],{s:8,it:1,a:'start',f:hiOn?'var(--accent)':null});
+      if(full){label('Missoula →',[46.935,-114.43],{s:8.4,a:'end'});label('↑ Bonners Ferry',[48.395,-116.36],{s:8.4,a:'start'});label('↓ Moscow',[46.905,-116.93],{s:8.4,a:'start'});}
+    } else {
+      var T=GEO.town, SW=1.3;
+      el('rect',{x:0,y:0,width:v.w,height:v.h,fill:'var(--surface-2)'},svg);
+      var water=T.shore.concat([[v.L0,v.O1],[v.L0,v.O0]]);
+      poly(water,{fill:'var(--glacier)','fill-opacity':.32});
+      line(T.shore,{stroke:'var(--glacier)','stroke-width':1.4*k,'stroke-dasharray':(5*k)+' '+(3*k)});
+      poly(T.tubbs,{fill:'var(--good)','fill-opacity':.36,stroke:'var(--good)','stroke-width':1*k});
+      poly(T.mceuen,{fill:'var(--good)','fill-opacity':.2});
+      poly(T.citypark,{fill:'var(--good)','fill-opacity':.2});
+      poly(T.loop,{fill:'none',stroke:S.day===0?'var(--accent)':'var(--ink)','stroke-width':1.6*k,'stroke-dasharray':(3*k)+' '+(3*k),opacity:S.day===0?1:.6});
+      T.streets.forEach(function(s){line(s.pts,{stroke:'var(--muted)','stroke-width':(s.hw?7.4:4.8)*k*SW,opacity:.45,'stroke-linecap':'butt'});});
+      T.streets.forEach(function(s){line(s.pts,{stroke:s.hw?'var(--warn)':'var(--surface)','stroke-width':(s.hw?5.6:3.4)*k*SW,'stroke-linecap':s.hw?'round':'butt',opacity:s.hw?.9:1});});
+      var EWL={'Sherman Ave':-116.7742,'Lakeside Ave':-116.7742,'Coeur d\'Alene Ave':-116.7742,'Indiana Ave':-116.7765,'Wallace Ave':-116.7765,'Garden Ave':-116.7742,'Foster Ave':-116.7765,'Montana Ave':-116.7742,'Mullan Ave':-116.7700,'Lakeshore Dr':-116.7672,'Front Ave':-116.7700,'Pennsylvania Ave':-116.7721,'Boyd Ave':-116.7721};
+      var NSL={'Government Way':47.6806,'Lincoln Way':47.6812,'15th St':47.6818};
+      T.streets.forEach(function(s){
+        var a=s.pts[0],b=s.pts[s.pts.length-1],ns=s.pts.length===2&&Math.abs(a[1]-b[1])<1e-6,m=/^(\d+)(st|nd|rd|th) St$/.exec(s.n),ll,txt=s.n;
+        if(s.n==='Northwest Blvd'){ll=s.pts[4];}
+        else if(ns){if(m){txt=m[1];ll=[47.67395,a[1]];if(+m[1]>=8&&+m[1]<16)ll=[47.67105,a[1]];}else if(NSL[s.n])ll=[NSL[s.n],a[1]];else return;}
+        else{if(!EWL[s.n])return;ll=[a[0],EWL[s.n]];}
+        var q=px(view,ll);
+        var t=el('text',{x:q[0],y:q[1]+2.5*k,'font-size':(m?6.4:6.8)*k,'text-anchor':'middle','class':'lbl','stroke-width':0,'letter-spacing':'.03em'},svg);t.style.fill='var(--muted)';t.style.fontWeight=700;t.textContent=txt;
+        if(ns&&!m)t.setAttribute('transform','rotate(-90 '+q[0]+' '+q[1]+')');
+        if(s.n==='Northwest Blvd')t.setAttribute('transform','rotate(-52 '+q[0]+' '+q[1]+')');
+      });
+      label('Lake Coeur d’Alene',[47.6652,-116.7905],{s:12,it:1,f:'var(--glacier)'});
+      label('Tubbs Hill',[47.6672,-116.7797],{s:10.5,it:1});
+      label('McEuen Park',[47.6712,-116.7790],{s:7.6,it:1});
+      label('City Park',[47.6749,-116.7925],{s:7.6,it:1});
+      label('Sanders Beach',[47.66515,-116.7672],{s:7.6,it:1,f:'var(--glacier)'});
+      label('← Cedars, Blackwell Island',[47.6779,-116.7958],{s:8,a:'start'});
+      label('↖ I-90, US-95, Riverstone',[47.6826,-116.7958],{s:8,a:'start',dy:4});
+      label('↑ Ten/6, 1 mile north',[47.6826,-116.7745],{s:8,a:'start',dy:4});
+      label('I-90 exit 15 →',[47.67455,-116.7602],{s:8,a:'end'});
+      label('Shoreline, parks and the loop trail are sketches',[47.66285,-116.7602],{s:7.2,a:'end',it:1});
+      var LO={hudsons:['end',-8,-6],row:['end',-8,8],titos:['start',7,13],collective:['middle',0,-8],fire:['start',9,-6],moontime:['end',-8,13],jimmys:['end',-6,-9],resort:['middle',0,13],tubbs:['start',9,6],mceuenlot:['start',8,-3],beach:['middle',0,14],etubbs:['start',9,4],angelos:['start',9,3]};
+      var SHORT={resort:'Resort, cruise dock',tubbs:'Tubbs Hill trailhead',mceuenlot:'Parking',etubbs:'East trailhead',row:'ROW',hudsons:'Hudson’s',titos:'Tito’s',jimmys:'Jimmy’s',collective:'Collective Kitchen',fire:'Fire Pizza',angelos:'Angelo’s'};
+      T.venues.forEach(function(vn){var o=LO[vn.id]||['start',8,3];post.push(function(){label(SHORT[vn.id]||vn.n,vn.ll,{s:8,a:o[0],dx:o[1],dy:o[2]});});});
+      leg.push(['var(--accent)','Today’s stops']);leg.push(['var(--warn)','Main routes: Sherman Ave, Northwest Blvd, Lincoln Way']);leg.push(['var(--good)','Parks']);leg.push(['var(--glacier)','Lake (shoreline sketched)']);
+    }
+    // pins for current day
+    var dd=days()[S.day], n=0, seen={}, grp=[];
+    function pin(q,txt,aria,fn,ps){
+      var g=el('g',{transform:'translate('+q[0]+','+q[1]+') scale('+(k*ps)+')',style:'cursor:pointer',tabindex:0,role:'button','aria-label':aria},svg);
+      el('path',{d:'M0 0 C-4 -8 -11 -12 -11 -21 A11 11 0 1 1 11 -21 C11 -12 4 -8 0 0 Z',fill:'var(--accent)',stroke:'var(--surface)','stroke-width':2},g);
+      var t=el('text',{x:0,y:String(txt).length>2?-17.6:-16.5,'text-anchor':'middle','font-size':String(txt).length>2?9:13,'font-weight':800,fill:'var(--accent-ink)'},g);t.textContent=txt;
+      g.addEventListener('click',fn);
+      g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();fn();}});
+    }
+    dd.items.forEach(function(it){
+      if(!it.pin)return; n++; it._n=n; var num=n;
+      if(view!=='town'&&(P[it.pin].intown||it.pin==='town')){grp.push(num);seen.town=1;return;}
+      var p=P[it.pin]; if(!inView(view,p.ll))return;
+      var q=px(view,p.ll), off=(seen[it.pin]||0); seen[it.pin]=off+1;
+      var ps=view==='town'?0.82:0.9;
+      pin([q[0]+off*20*k*ps,q[1]],num,'Stop '+num+': '+p.n,function(){showPop(it.pin);},ps);
+    });
+    if(grp.length&&inView(view,P.town.ll)){
+      var run2=grp.length>1&&grp[grp.length-1]-grp[0]===grp.length-1;
+      pin(px(view,P.town.ll),grp.length===1?grp[0]:(run2?grp[0]+'–'+grp[grp.length-1]:grp[0]+'+'),'Stops in downtown Coeur d’Alene. Opens the Downtown map.',function(){S.view='town';drawMap();},0.95);
+    }
+    // other places (small dots) in view
+    Object.keys(P).forEach(function(id){
+      if(seen[id]||!inView(view,P[id].ll)||(P[id].intown&&view!=='town')||(view==='town'&&(id==='town'||id==='cedars'||id==='anthonys'||id==='ten6')))return;
+      var q=px(view,P[id].ll); var c=el('circle',{cx:q[0],cy:q[1],r:(view==='town'?4:3.6)*k,fill:'var(--surface)',stroke:'var(--ink)','stroke-width':1.5*k,style:'cursor:pointer'},svg);
+      c.addEventListener('click',function(){showPop(id);});
+    });
+    post.forEach(function(f){f();});
+    // scale bar
+    var mi=view==='town'?0.25:((view==='region'||view==='east')?20:10);
+    var kmPerPx=(v.O1-v.O0)*111.32*Math.cos((v.L0+v.L1)/2*Math.PI/180)/v.w;
+    var len=mi*1.609/kmPerPx;
+    var sg=el('g',{transform:'translate('+(14*k)+','+(v.h-16*k)+')'},svg);
+    el('rect',{x:-4*k,y:-17*k,width:len+8*k,height:24*k,rx:4*k,fill:'var(--halo)'},sg);
+    el('rect',{x:0,y:0,width:len,height:4*k,fill:'var(--ink)'},sg);
+    var stx=el('text',{x:0,y:-5*k,'font-size':10*k,'font-weight':700,fill:'var(--ink)'},sg);stx.textContent=view==='town'?'¼ mi · 5 min walk':mi+' mi';
+    // north arrow
+    var cg=el('g',{transform:'translate('+(v.w-24*k)+','+(24*k)+') scale('+k+')'},svg);
+    el('circle',{r:14,fill:'var(--halo)'},cg);
+    el('path',{d:'M0 -10 L4 3 L0 1 L-4 3 Z',fill:'var(--accent)'},cg);
+    var nt=el('text',{y:11,'text-anchor':'middle','font-size':7,'font-weight':800,fill:'var(--ink)'},cg);nt.textContent='N';
+    document.getElementById('legend').innerHTML=leg.map(function(l){return '<span><i style="background:'+l[0]+'"></i>'+l[1]+'</span>';}).join('');
+    var dvw=days()[S.day].view;document.querySelectorAll('[data-view]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.view===view||(b.dataset.view==='day'&&view===dvw));});
+    document.getElementById('mapNote').textContent={region:'Spokane to Alberton Gorge, about 160 miles across',town:'Downtown Coeur d’Alene',west:'Spokane airport to Coeur d’Alene',north:'Coeur d’Alene to Scotchman Peak',valley:'Coeur d’Alene to Lookout Pass',east:'Coeur d’Alene to Alberton Gorge'}[view];
+    hidePop();
+  }
+  var pop=document.getElementById('pop');
+  function showPop(id){document.getElementById('popTitle').textContent=P[id].n;document.getElementById('popText').textContent=P[id].t;pop.classList.add('show');}
+  function hidePop(){pop.classList.remove('show');}
+  document.getElementById('popClose').addEventListener('click',hidePop);
+  document.querySelectorAll('[data-view]').forEach(function(b){b.addEventListener('click',function(){S.view=b.dataset.view;drawMap();});});
+
+  // ---------- Plan ----------
+  function renderTabs(){
+    var box=document.getElementById('tabs');box.innerHTML='';
+    days().forEach(function(d,i){
+      var b=document.createElement('button');b.type='button';b.className='tab';b.id='tab'+i;b.setAttribute('role','tab');b.setAttribute('aria-selected',i===S.day);
+      b.innerHTML='<b></b><span></span>';b.querySelector('b').textContent=d.label;b.querySelector('span').textContent=shortDate(i)+' · '+d.tag;
+      b.addEventListener('click',function(){S.day=i;S.view=null;save();renderAll();});box.appendChild(b);
+    });
+  }
+  function renderDay(){
+    var d=days()[S.day];
+    document.getElementById('dayName').textContent=d.label+' · '+shortDate(S.day);
+    document.getElementById('dayTag').textContent=d.tag;
+    var notes=NOTES;
+    document.getElementById('dayNote').innerHTML=notes[d.note]||'';
+    renderKnow();
+    var ol=document.getElementById('timeline');ol.innerHTML='';var n=0;
+    d.items.forEach(function(it){
+      var li=document.createElement('li');li.className='ev'+(it.drive?' drive':'')+(it.pin?' pin':'');
+      li.innerHTML='<div class="t"></div><div class="rail"><span class="dot"></span></div><div class="body"><div class="name"></div><div class="blurb"></div></div>';
+      li.querySelector('.t').textContent=it.t;
+      var nm=li.querySelector('.name');nm.textContent=it.name;
+      if(it.cost){var c=document.createElement('span');c.className='cost';c.textContent=it.cost;nm.appendChild(c);}
+      if(it.ft){var tt=typTemp(parseT(it.t),it.ft);if(tt!=null){var tc=document.createElement('span');tc.className='tchip';tc.textContent='typically '+tt+'°F';nm.appendChild(tc);}}
+      if(it.blurb)li.querySelector('.blurb').textContent=it.blurb; else li.querySelector('.blurb').remove();
+      if(it.pin){n++;var dot=li.querySelector('.dot');dot.textContent=n;dot.setAttribute('role','button');dot.tabIndex=0;dot.setAttribute('aria-label','Show '+P[it.pin].n+' on map');
+        var go=function(){var pp=P[it.pin];if(pp.intown){if(curView!=='town'){S.view='town';drawMap();}}else if(!inView(curView,pp.ll)){S.view=inView(d.view,pp.ll)?'day':'region';drawMap();}showPop(it.pin);};
+        dot.addEventListener('click',go);dot.addEventListener('keydown',function(e){if(e.key==='Enter'){go();}});}
+      ol.appendChild(li);
+    });
+  }
+
+  function renderKnow(){
+    var st=sunTimes(dayDate(3));
+    var K=[
+      [['Airport','Spokane International (GEG) is 35 to 39 miles west of Coeur d’Alene, about 40 to 45 minutes on I-90. Coeur d’Alene has no commercial flights.'],['Time zone','North Idaho runs on Pacific time, two hours behind Austin.'],['Tubbs Hill parking','Pay parking in the McEuen Park lot at 3rd Street. The main trailhead is at the southwest corner of the park by the boat launch. A smaller lot sits at the south end of 10th Street.'],['Restrooms','By the McEuen Park trailhead and at East Tubbs Hill Park.'],['Swimming','Short side paths off the loop lead down to coves. Summer afternoons get busy with people jumping off the rocks.'],['Cell service','Good in town. Download offline maps tonight for the next two days.']],
+      {scotch:[['Road','Turn north at the Chevron in Clark Fork, then follow Mosquito Creek Road 276 and Forest Roads 2295, 2294 and 2294A. The last miles are gravel. Small signs point to Trail 65.'],['Water','None on the trail. Carry at least 3 liters each.'],['Goats','Mountain goats live near the summit. Stay well back and never feed them. The trail closed for a time in 2015 after goats got too used to people.'],['Footing','Steep with loose rock, most of all in the last half mile. Poles help.'],['Pass','No pass or fee.'],['Snow','Snow can linger near the top early in the summer. Check a recent trail report.']],
+       stevens:[['Trailhead','I-90 exit 69, East Mullan. Go past the Lucky Friday Mine, then about a mile up Willow Creek Road.'],['Car','Hikers have reported car prowls at this trailhead. Leave nothing visible.'],['Creek','One real stream crossing about 1.5 miles in. Poles or sandals help when the water is up.'],['Route','Trail 165 goes left to Stevens Lakes. Trail 138 on the right goes to Lone Lake.'],['Upper lake','The path to the upper lake starts farther around the lower lake than most people expect.'],['Season','Best in July and August.']],
+       mineral:[['Trailhead','Paved lot, two picnic shelters, drinking water and pit toilets. No fee.'],['Trail','A 3.3-mile loop with 22 numbered nature stops.'],['Cruise','90-minute scenic cruises leave the resort dock at 115 S 2nd St daily from April through October. Check times at cdacruises.com.'],['Paddling','A recent listing showed a single kayak at $38 for a half day. Street parking near the docks is tight in summer.'],['Lunch','Hudson’s is cash only and closed Sundays.']]}[S.hike],
+      {clark:[['Meeting place','150 River St, Superior, Montana. Park on River Street and meet behind the Old School House building.'],['Provided','Wetsuit, splash jacket, booties, helmet, life jacket, lunch and the ride to and from the river.'],['Bring','Swimsuit, sun shirt, quick-dry shorts and sandals with heel straps. No flip-flops.'],['Fees','ROW adds a 7% land and water access fee and a 3% Montana use fee. Guide tips are separate.'],['Boats','13-foot paddle rafts for up to 7 guests and a guide. Everyone paddles.'],['Water','ROW lists the river at 62 to 68°F in July and August.'],['Rules','ROW does not allow alcohol on its trips.']],
+       spokane:[['Where','The float runs through Spokane, 35 to 45 minutes west of Coeur d’Alene.'],['Water','ROW describes the Spokane as a warm, gentle float by late July and August. Its bigger water comes in late May and June.'],['Price','A recent listing showed $65 per adult for a half-day scenic float. Confirm the 2027 price and meeting place.'],['Booking','ROW Adventure Center at 202 E Sherman Ave books Spokane River trips. 208-770-2517.']]}[S.river],
+      {hiawatha:[['Tickets','Buy trail passes, shuttle passes and bike rentals online before you go. Rental bikes are picked up at East Portal with a reservation.'],['Lights','A light is required in the tunnels. Bring one or rent one. Helmets are recommended.'],['Layers','The long tunnel is dark, wet and much colder than the air outside. Bring a jacket.'],['Timing','Most riders take 2.5 to 3.5 hours to Pearson. Then allow about 45 minutes for the shuttle wait, 30 minutes on the shuttle and 15 to 20 minutes back through the tunnel.'],['Season','The 2026 season ran May 22 to September 13. Check the 2027 dates and hours.'],['Lunch','Wallace is right on I-90 between the trail and the airport.']],
+       lake:[['Sunrise','Sunrise is '+st.rise+' on '+shortDate(3)+'.'],['Brunch','Ten/6 is open Wednesday to Sunday, 8 AM to 3 PM, and fills up. Reserve a table.'],['Flight','Works with flights from about 2:15 PM on.'],['Airport','Allow 45 minutes for the drive plus time to return the SUV.']]}[S.last]
+    ][S.day];
+    var c=CLIMATE[dayDate(S.day).getUTCMonth()];
+    if(c&&S.day===1){var a=typTemp(HSTART[S.hike],WP[S.hike].pts[0][1]),b=typTemp(Math.min(hikeTimes(S.hike).arr,840),HIKES[S.hike].topFt);K=K.concat([['What to wear','Typically about '+a+'°F at the start and about '+b+'°F at the high point. These are estimates from town averages, adjusted for elevation.']]);}
+    if(c&&S.day===2&&S.river==='clark'){K=K.concat([['Air temperature','Coeur d’Alene averages a high of '+c[0]+'°F this month. Expect similar or warmer in the canyon.']]);}
+    document.getElementById('know').innerHTML=K.map(function(k){return '<div><b>'+esc(k[0])+'</b>'+esc(k[1])+'</div>';}).join('');
+  }
+  function renderWp(){
+    var key=S.hike,w=WP[key],tb=document.getElementById('wpBody');tb.innerHTML='';
+    w.pts.forEach(function(p,i){
+      var tr=document.createElement('tr');tr.className='row';
+      tr.innerHTML='<td class="n"></td><td class="n"></td><td><b></b><span class="note"></span></td><td class="eta"></td>';
+      tr.children[0].innerHTML=p[0].toFixed(1)+'<span class="el2">'+p[1].toLocaleString()+' ft</span>';tr.children[1].textContent=p[1].toLocaleString()+' ft';tr.querySelector('b').textContent=p[3];tr.querySelector('.note').textContent=p[4];
+      tr.children[3].textContent=fmtT(eta(key,i));
+      tb.appendChild(tr);
+    });
+    document.querySelectorAll('[data-pace]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.pace===S.pace);});
+    document.getElementById('paceNote').textContent=PACE[S.pace].n+' Waypoint elevations are estimates built from published gain figures.';
+    var t=TURN[key],ht=hikeTimes(key),tn=document.getElementById('turnNote');
+    if(!t){tn.className='turn';tn.textContent='Back at the trailhead around '+fmtT(ht.back)+'. No turnaround time needed on this one.';return;}
+    var late=ht.arr>t[0];
+    tn.className='turn'+(late?' late':'');
+    tn.textContent=(late?'At this pace you reach the summit at '+fmtT(ht.arr)+', after the '+t[1]+' cutoff. Start earlier or pick a shorter hike. ':'Turnaround time: '+t[1]+'. You reach the summit around '+fmtT(ht.arr)+' and are back at the car around '+fmtT(ht.back)+'. ')+t[2];
+  }
+  document.querySelectorAll('[data-pace]').forEach(function(b){b.addEventListener('click',function(){S.pace=b.dataset.pace;save();renderAll();});});
+  function meter(n){var s='<span class="meter" aria-label="Difficulty '+n+' of 5">';for(var i=1;i<=5;i++)s+='<i class="'+(i<=n?'on':'')+'"></i>';return s+'</span>';}
+  function stats(arr){return arr.map(function(x){return '<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');}
+  function optButtons(boxId,OBJ,cur,sub,onPick){
+    var box=document.getElementById(boxId);box.innerHTML='';
+    Object.keys(OBJ).forEach(function(key){var o=OBJ[key];
+      var b=document.createElement('button');b.type='button';b.className='opt';b.setAttribute('aria-pressed',cur===key);
+      b.innerHTML='<span class="t"></span><span class="s"></span>'+(o.lvl?meter(o.lvl):'');b.querySelector('.t').textContent=sub(o)[0];b.querySelector('.s').textContent=sub(o)[1];
+      b.addEventListener('click',function(){onPick(key);save();renderAll();});box.appendChild(b);});
+  }
+  function renderHikes(){
+    optButtons('hikeOpts',HIKES,S.hike,function(h){return [h.name,h.sub+' · '+h.mi+' mi'];},function(k){S.hike=k;S.day=1;S.view=null;});
+    var h=HIKES[S.hike];
+    document.getElementById('hikeStats').innerHTML=stats([[h.mi,'Miles RT'],[h.gain.toLocaleString(),'Ft gain'],[h.top.replace('about ','~'),'High point'],[h.hrs,'Hours']]);
+    document.getElementById('hikeNote').textContent=h.note;
+    drawCompare();renderWp();
+    document.getElementById('chipMiles').textContent=(2.2+h.mi).toFixed(1);
+    document.getElementById('chipGain').textContent=(250+h.gain).toLocaleString();
+  }
+  function drawCompare(){
+    var s=document.getElementById('profile');s.innerHTML='';
+    var L=52,R=560,T=14,B=160,X1=4.4,Y0=2000,Y1=7500;
+    function X(m){return L+m/X1*(R-L);} function Y(f){return B-(f-Y0)/(Y1-Y0)*(B-T);}
+    for(var f=3000;f<=7000;f+=1000){el('line',{x1:L,x2:R,y1:Y(f),y2:Y(f),stroke:'var(--line)'},s);var t=el('text',{x:L-8,y:Y(f)+4,'text-anchor':'end','font-size':11,fill:'var(--muted)'},s);t.textContent=(f/1000)+'k ft';}
+    for(var m=0;m<=4;m+=1){var t2=el('text',{x:X(m),y:B+18,'text-anchor':'middle','font-size':11,fill:'var(--muted)'},s);t2.textContent=m+' mi';el('line',{x1:X(m),x2:X(m),y1:B,y2:B+4,stroke:'var(--muted)'},s);}
+    el('line',{x1:L,x2:R,y1:B,y2:B,stroke:'var(--muted)'},s);
+    Object.keys(HIKES).forEach(function(key){
+      var w=WP[key],a=w.pts[0],sel=key===S.hike,x1=X(0),y1=Y(a[1]),x2=X(w.oneway),y2=Y(HIKES[key].topFt);
+      if(sel)el('path',{d:'M'+x1+' '+y1+' L'+x2+' '+y2+' L'+x2+' '+B+' L'+x1+' '+B+' Z',fill:'var(--accent)',opacity:.12},s);
+      el('line',{x1:x1,y1:y1,x2:x2,y2:y2,stroke:sel?'var(--accent)':'var(--muted)','stroke-width':sel?4:2,'stroke-linecap':'round',opacity:sel?1:.7},s);
+      el('circle',{cx:x2,cy:y2,r:sel?5:3.5,fill:sel?'var(--accent)':'var(--muted)'},s);
+      var tl=el('text',{x:x2+9,y:y2+4,'font-size':sel?12.5:11,'font-weight':sel?700:500,fill:sel?'var(--ink)':'var(--muted)'},s);tl.textContent=HIKES[key].name;
+    });
+  }
+  function renderRivers(){
+    optButtons('riverOpts',RIVERS,S.river,function(r){return [r.name+' · '+fmt(r.price),r.sub];},function(k){S.river=k;S.day=2;S.view=null;});
+    var r=RIVERS[S.river],ck=S.river==='clark';
+    document.getElementById('riverStats').innerHTML=ck?stats([['10','River miles'],['5–6','Hours on water'],['II–III','Rapids'],[fmt(r.price),'Per person']]):stats([['½ day','Guided float'],['40 min','Drive'],['I–II','Mostly gentle'],[fmt(r.price),'Per person']]);
+    document.getElementById('riverNote').textContent=r.note;
+    document.getElementById('chipRiver').textContent=r.miles;
+    document.getElementById('runHead').textContent=ck?'The run: Alberton Gorge':'The float';
+    document.getElementById('runLede').textContent=ck?'Rapid names are from ROW. The class rating, mileage and gorge notes are American Whitewater’s for the Cyr to Tarkio run. The order is my best reading of those sources, so ask your guide for the real play-by-play.':'A slow day on the water, with time left over for Spokane and the lake.';
+    var h='';
+    if(ck){
+      h+='<li class="calm"><span class="no">▶</span><div><b>Launch near Cyr</b><span class="cls">Mile 0</span><br>ROW drives you from Superior. Safety talk, then warm-up water.</div></li>';
+      h+='<li><span class="no">1</span><div><b>Cliffside</b><span class="cls">Upper Gorge</span><br>American Whitewater says it has some of the biggest waves on the run at lower flows.</div></li>';
+      h+='<li class="calm"><span class="no">~</span><div><b>Triple Bridges</b><span class="cls">Landmark</span><br>The bridges mark the start of the Lower Gorge.</div></li>';
+      h+='<li><span class="no">2</span><div><b>Tumbleweed</b><span class="cls">Class III · mile 4.9</span><br>Called likely the most challenging rapid on the run.</div></li>';
+      h+='<li><span class="no">3</span><div><b>Boat Eater</b><span class="cls">Lower Gorge</span><br>One of the rapids ROW names on this trip.</div></li>';
+      h+='<li><span class="no">4</span><div><b>Fang</b><span class="cls">Lower Gorge</span><br>Another ROW-named rapid in the lower canyon.</div></li>';
+      h+='<li class="calm"><span class="no">■</span><div><b>Take out near Tarkio</b><span class="cls">About mile 10</span><br>Off the river and back to Superior with ROW by about 4:30 PM Pacific.</div></li>';
+    } else {
+      h+='<li class="calm"><span class="no">▶</span><div><b>Meet in Spokane</b><span class="cls">Midday</span><br>Your outfitter sets the time and place when you book.</div></li>';
+      h+='<li class="calm"><span class="no">~</span><div><b>Half-day float</b><span class="cls">Gentle water</span><br>Warm and slow by late July. Good for swimming off the raft if your guide allows it.</div></li>';
+      h+='<li class="calm"><span class="no">■</span><div><b>Riverfront Park</b><span class="cls">After</span><br>Walk to Spokane Falls and get a late lunch downtown before the drive back.</div></li>';
+    }
+    document.getElementById('rapidList').innerHTML=h;
+  }
+  function renderLast(){
+    optButtons('lastOpts',LAST,S.last,function(l){return [l.name,l.sub];},function(k){S.last=k;S.day=3;S.view=null;});
+    var l=LAST[S.last];
+    document.getElementById('lastStats').innerHTML=S.last==='hiawatha'?stats([['14.4','Miles downhill'],['10','Tunnels'],['7','Trestles'],['~$'+l.cost,'Per person']]):stats([['45 min','To the airport'],['8–3','Ten/6 hours'],['2:15 PM','Earliest flight'],['~$'+l.cost,'Kayak rental']]);
+    document.getElementById('lastNote').textContent=l.note;
+  }
+  function renderDinners(){
+    var box=document.getElementById('dinners');box.innerHTML='';
+    DINNERS.forEach(function(nt,ni){
+      var div=document.createElement('div');div.className='night';div.innerHTML='<h4></h4><div class="pills"></div>';div.querySelector('h4').textContent=nt.night;
+      nt.opts.forEach(function(o,oi){var b=document.createElement('button');b.type='button';b.className='pill';b.setAttribute('aria-pressed',S.dinner[ni]===oi);
+        b.innerHTML='<span></span> <small></small>';b.querySelector('span').textContent=o[0];b.querySelector('small').textContent='~'+fmt(o[1]);
+        b.addEventListener('click',function(){S.dinner[ni]=oi;save();renderAll();});div.querySelector('.pills').appendChild(b);});
+      box.appendChild(div);
+    });
+  }
+
+
+  // ---------- Budget ----------
+  var COLORS=['#2b6f8f','#d4511b','#1d4a3c','#c08510','#7a5aa6','#3c8a5c','#8a8f8c'];
+  function budget(){
+    var n=crewN(), cars=Math.ceil(n/5), nights=3, days4=4;
+    var lodgeNight=S.lodge==='house'?S.house:Math.ceil(n/2)*S.hotel;
+    var lodging=lodgeNight*nights*(1+S.tax/100)/n;
+    var miles=80+{scotch:200,stevens:115,mineral:25}[S.hike]+{clark:210,spokane:70}[S.river]+(S.last==='hiawatha'?135:0);
+    var gas=miles*0.17;
+    var car=(S.car*days4+gas+10)*cars/n;
+    var r=RIVERS[S.river], ck=S.river==='clark';
+    var raft=r.price*(ck?1.10:1)+r.price*0.15;
+    var extras=LAST[S.last].cost;
+    var din=DINNERS[0].opts[S.dinner[0]][1]+DINNERS[1].opts[S.dinner[1]][1]+DINNERS[2].opts[S.dinner[2]][1];
+    var dinners=din*1.2;
+    var food=S.food*days4;
+    var lines=[
+      ['Flight',S.flight,'Round trip, Austin to Spokane, one connection'],
+      ['Lodging',lodging,(S.lodge==='house'?'House at '+fmt(S.house)+'/night':'' + Math.ceil(n/2)+' room'+(Math.ceil(n/2)>1?'s':'')+' at '+fmt(S.hotel)+'/night')+', 3 nights, +'+S.tax+'%, split '+n+' ways'],
+      ['SUV, gas, parking',car,cars+' SUV'+(cars>1?'s':'')+' × 4 days + about '+fmt(gas)+' gas for roughly '+miles+' miles + $10 parking each, split '+n+' ways'],
+      ['River day',raft,r.name+' '+fmt(r.price)+(ck?' + 10% in fees':'')+' + 15% guide tip (my estimate)'],
+      ['Dinners',dinners,'Your 3 picks, about '+fmt(din)+' + 20% tip, no alcohol'],
+      ['Other meals',food,fmt(S.food)+'/day × 4'],
+      ['Activities',extras,S.last==='hiawatha'?'Hiawatha bike, trail pass and shuttle (2026 prices)':'Half-day kayak rental on the last morning']
+    ];
+    var total=lines.reduce(function(a,l){return a+l[1];},0);
+    document.getElementById('ppTotal').textContent=fmt(total);
+    document.getElementById('chipCost').textContent=fmt(Math.round(total/50)*50);
+    document.getElementById('grpTotal').textContent=fmt(total*n)+' for the group of '+n;
+    document.getElementById('costBar').innerHTML=lines.map(function(l,i){return '<div style="width:'+(l[1]/total*100).toFixed(2)+'%;background:'+COLORS[i]+'"></div>';}).join('');
+    var tb=document.getElementById('costLines');tb.innerHTML='';
+    lines.forEach(function(l,i){var tr=document.createElement('tr');tr.innerHTML='<td><span class="sw"></span><b></b><span class="basis"></span></td><td></td>';
+      tr.querySelector('.sw').style.background=COLORS[i];tr.querySelector('b').textContent=l[0];tr.querySelector('.basis').textContent=l[2];tr.children[1].textContent=fmt(l[1]);tb.appendChild(tr);});
+    document.getElementById('nOut').textContent=n;document.getElementById('nMinus').disabled=document.getElementById('nPlus').disabled=S.crew.length>=2;
+    document.getElementById('carsHint').textContent=(S.crew.length>=2?'Set by your crew list. ':'')+(cars===1?'One large SUV fits up to 5 people with gear.':cars+' SUVs needed. One fits up to 5 people with gear.')+(ck&&n>7?' ROW rafts hold 7 guests, so you will need two boats.':'');
+    document.querySelectorAll('[data-lodge]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.lodge===S.lodge);});
+    var fl=document.getElementById('fLodge');if(document.activeElement!==fl)fl.value=S.lodge==='house'?S.house:S.hotel;
+    document.getElementById('fLodgeLabel').textContent=S.lodge==='house'?'Whole-house rate per night':'Hotel rate per room, per night';
+    document.getElementById('lodgeHint').textContent=S.lodge==='house'?'A house usually beats hotels for 4+ guys: one kitchen for the 5 AM hike breakfast.':'Two guys per room.';
+    document.getElementById('lodgeRateHint').textContent=S.lodge==='house'?'Rental trackers put the Coeur d’Alene average between about $300 and $490 a night across all sizes. A 3 or 4 bedroom place near the lake in July usually costs more, so treat this as a starting guess.':'July hotel rates here averaged about $174 a night on Expedia, with summer weekends closer to $190 to $270. Lakefront rooms cost more.';
+    return total;
+  }
+  function bindInput(id,key){var e=document.getElementById(id);e.value=S[key];e.addEventListener('input',function(){var v=parseFloat(e.value);if(!isNaN(v)&&v>=0){S[key]=v;save();budget();}});}
+  bindInput('fFlight','flight');bindInput('fTax','tax');bindInput('fCar','car');bindInput('fFood','food');
+  document.getElementById('fLodge').addEventListener('input',function(e){var v=parseFloat(e.target.value);if(!isNaN(v)&&v>=0){S[S.lodge]=v;save();budget();}});
+  document.querySelectorAll('[data-lodge]').forEach(function(b){b.addEventListener('click',function(){S.lodge=b.dataset.lodge;save();budget();});});
+  document.getElementById('nMinus').addEventListener('click',function(){if(S.n>2){S.n--;save();budget();}});
+  document.getElementById('nPlus').addEventListener('click',function(){if(S.n<12){S.n++;save();budget();}});
+
+
+  // ---------- Dates, sun, climate ----------
+  var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function dayDate(i){var p=(S.start||DEF.start).split('-').map(Number);var d=new Date(Date.UTC(p[0],p[1]-1,p[2]));d.setUTCDate(d.getUTCDate()+i);return d;}
+  function shortDate(i){var d=dayDate(i);if(isNaN(d))return '';return WD[d.getUTCDay()]+' '+MONTHS[d.getUTCMonth()]+' '+d.getUTCDate();}
+  function sunTimes(d){ // NOAA approximation, Coeur d'Alene ID, Pacific Daylight Time
+    var lat=47.6777*Math.PI/180, lon=-116.7805;
+    var start=Date.UTC(d.getUTCFullYear(),0,1), doy=Math.floor((d-start)/864e5)+1;
+    var g=2*Math.PI/365*(doy-1);
+    var eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+    var dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+    var ha=Math.acos(Math.cos(90.833*Math.PI/180)/(Math.cos(lat)*Math.cos(dec))-Math.tan(lat)*Math.tan(dec))*180/Math.PI;
+    var off=-420; // PDT, UTC-7 (DST runs through early November)
+    function fm(m){m=Math.round(m);var h=Math.floor(m/60),mm=m%60;var ap=h>=12?'PM':'AM';var hh=h%12||12;return hh+':'+(mm<10?'0':'')+mm+' '+ap;}
+    return {rise:fm(720-4*(lon+ha)-eq+off),set:fm(720-4*(lon-ha)-eq+off)};
+  }
+  var CLIMATE={4:[66,44,'1.9 in'],5:[72,51,'2.2 in'],6:[84,58,'0.7 in'],7:[83,56,'0.8 in'],8:[74,49,'0.9 in']};
+  function renderDates(){
+    var strip=document.getElementById('dayStrip');strip.innerHTML='';
+    for(var i=0;i<4;i++){var d=dayDate(i),st=sunTimes(d);var c=document.createElement('div');c.className='dcell';
+      c.innerHTML='<b></b><span></span><span class="sun"></span>';c.querySelector('b').textContent='Day '+(i+1);c.children[1].textContent=shortDate(i);
+      c.querySelector('.sun').textContent='Sunrise '+st.rise+' · Sunset '+st.set;strip.appendChild(c);}
+    var m=dayDate(0).getUTCMonth(), cl=CLIMATE[m], nb=document.getElementById('norms');
+    nb.innerHTML=cl?('<span>Average high <b>'+cl[0]+'°F</b></span><span>Average low <b>'+cl[1]+'°F</b></span><span>Rain for the month <b>'+cl[2]+'</b></span><span class="muted">Averages for Coeur d’Alene. The trailheads and summits run cooler.</span>'):'<span class="muted">This plan is built for May through September.</span>';
+    var a=[], d0=dayDate(0), mo=d0.getUTCMonth(), dt=d0.getUTCDate();
+    function md(mm,dd){return mo>mm||(mo===mm&&dt>=dd);}
+    if(mo<4||mo>8) a.push(['bad','ROW’s 2027 Clark Fork season runs July 1 to August 29 and the Hiawatha ran late May to mid-September in 2026. Pick dates in July or August for the full plan.']);
+    else {
+      if(mo<6) a.push(['','Before July 1 the Clark Fork trips are not running. ROW runs the Spokane, St. Joe and Lochsa in May and June. Scotchman Peak and Stevens Lakes can still hold snow.']);
+      if(mo===6&&dt<10) a.push(['','Early July brings higher flows on the Clark Fork. ROW’s minimum age is 12 until about July 10. Snow can linger near the top of Scotchman.']);
+      if(mo===6&&dt<17) a.push(['','ROW lists the Clark Fork season from July 1 but daily departures only from July 19. Check which days run before you lock dates.']);
+      if((mo===6&&dt>=17)||(mo===7&&dt<=27)) a.push(['good','Good window: daily Clark Fork departures, snow-free trails, a warm lake and the driest weeks of the year. Book lodging and the rental car early.']);
+      if(mo===7) a.push(['','August can bring wildfire smoke. Check AirNow the week of the trip and keep the easier hike in your back pocket.']);
+      if((mo===7&&dt>27)||mo===8) a.push(['','ROW’s 2027 Clark Fork season ends August 29, and the Hiawatha closed September 13 in 2026. Check both before you commit to these dates.']);
+    }
+    if(d0.getUTCDay()===0) a.push(['','Day 1 is a Sunday and Hudson’s is closed Sundays. Move that lunch to another day.']);
+    var d3=dayDate(3).getUTCDay(); if(S.last==='lake'&&(d3===1||d3===2)) a.push(['','Day 4 falls on a '+['','Monday','Tuesday'][d3]+'. Ten/6 serves its full menu Wednesday to Sunday, so plan a different breakfast.']);
+    document.getElementById('dateAlerts').innerHTML=a.map(function(x){return '<div class="alert '+x[0]+'">'+x[1]+'</div>';}).join('');
+  }
+  document.getElementById('fStart').addEventListener('change',function(e){if(e.target.value){S.start=e.target.value;save();renderAll();}});
+
+  // ---------- Booking panel ----------
+  var BOOK={
+    raft:{intro:'Prices come from 2026 and 2027 listings. Confirm them, and the season dates, when you book.',cards:[
+      {n:'ROW Adventures · Clark Fork',m:'Alberton Gorge, Montana · meets in Superior',p:'$140',t:'Full day, 10 river miles, Class II–III. Lunch, wetsuit, splash jacket and the river shuttle are included. 2027 season July 1 to August 29, daily from July 19. Rafts hold 7 guests.',l:'https://www.rowadventures.com/montana-rafting/clark-fork-river-rafting',tags:['This plan','Full day']},
+      {n:'ROW Adventure Center',m:'202 E Sherman Ave · 208-770-2517',p:'Varies',t:'Downtown storefront for ROW’s local day trips: Spokane River floats and whitewater, guided rides on the Hiawatha, and fishing on the Coeur d’Alene River.',tags:['Walk in']},
+      {n:'Spokane River scenic float',m:'Spokane · 35 to 45 min west',p:'$65',t:'Half-day guided float. Warm and gentle by late July. The Spokane’s whitewater section runs best in late May and June.',l:'https://tripoutside.com/browse/item:Spokane_River_Scenic_Float_Trip:i1ve5xgmsqwf5hvetjwfskvarfdensqvfkxqcr2vsczejht',tags:['Easy option']},
+      {n:'Route of the Hiawatha',m:'East Portal · I-90 exit 5, Taft, Montana',p:'about $80',t:'14.4 miles of downhill rail trail with 10 tunnels and 7 trestles. 2026 prices: $20 trail pass, $20 shuttle, $40 bike rental. Book online ahead and bring a light.',l:'https://www.ridethehiawatha.com/',tags:['Day 4']},
+      {n:'Lake Coeur d’Alene Cruises',m:'115 S 2nd St · resort dock',p:'Check',t:'90-minute scenic cruises to the northern bays of the lake, daily from April through October.',l:'https://www.cdacruises.com/daily-cruises/',tags:['Lake']},
+      {n:'Kayak and paddleboard rentals',m:'On the downtown waterfront',p:'from $38',t:'Half-day and full-day rentals. A recent listing showed a single kayak at $38 for a half day, before taxes and fees.',l:'https://docklyne.com/kayak/HH130',tags:['Lake']}
+    ]},
+    stay:{intro:'Where you stay decides how much you drive to dinner. For this plan, a house in or near downtown is the best fit. The descriptions below are general guidance, so check each listing on a map.',cards:[
+      {n:'Downtown and Sanders Beach',m:'Best fit for this plan',p:'$$$',t:'Walk to the Sherman Avenue restaurants, Tubbs Hill and the beaches. A 3 or 4 bedroom house gives you a kitchen for early hike breakfasts.',tags:['Walkable','Houses']},
+      {n:'The Coeur d’Alene Resort',m:'115 S 2nd St · on the lake',p:'$$$$',t:'The big lakefront hotel, with the marina, floating boardwalk and cruise dock at the door.',tags:['Hotel','Lakefront']},
+      {n:'Midtown and Riverstone',m:'A few minutes from downtown',p:'$$',t:'More hotel choices away from the lakefront. Riverstone has restaurants around a pond, including Anthony’s.',tags:['Hotels']},
+      {n:'Post Falls or Hayden',m:'10 to 15 minutes out',p:'$–$$',t:'Usually cheaper rooms and bigger houses. You drive in for every dinner and the lake.',tags:['Budget']}
+    ]},
+    eat:{intro:'Addresses and hours are from 2026 listings where I found them. Confirm before you go.',groups:[
+      {h:'Breakfast and lunch',cards:[
+        {n:'Jimmy’s Down the Street',m:'1613 E Sherman Ave',t:'Breakfast and lunch only. Known for pecan rolls.',tags:['Breakfast']},
+        {n:'Ten/6',m:'1705 N Government Way · Wed to Sun, 8 AM–3 PM',t:'New Orleans-style breakfast with an Alice in Wonderland theme. The beignets are the thing to order. Reserve a table.',l:'https://casago.com/unwind/restaurants/ten-6',tags:['Day 4 brunch','Book ahead']},
+        {n:'Hudson’s Hamburgers',m:'207 E Sherman Ave',t:'Burgers and pie at the counter since 1907. Cash only, no fries. Closed Sundays and closes in the late afternoon.',tags:['Cash only']},
+        {n:'Lunch on the river',m:'Day 3',t:'ROW includes lunch on the Clark Fork trip, with water and sparkling water.',tags:['Included']}]},
+      {h:'Dinners in this plan',cards:[
+        {n:'Cedars Floating Restaurant',m:'1514 S Marina Dr, Blackwell Island · 208-664-2922',t:'Dinner on the water where the lake meets the Spokane River. Known for prime rib, cedar-planked salmon and the salad bar. Reservations suggested.',tags:['Book ahead','On the water']},
+        {n:'Tito’s Italian Grill',m:'210 E Sherman Ave',t:'Italian in the middle of downtown.',tags:['Downtown']},
+        {n:'Fire Artisan Pizza',m:'Sherman Ave near 6th St · to 9 PM, 10 PM Fri and Sat',t:'Wood-fired pizza. An easy pick after a long hike.',tags:['Casual']},
+        {n:'Collective Kitchen',m:'501 Sherman Ave',t:'Downtown public house with a full food menu.',tags:['Casual']},
+        {n:'Moon Time',m:'1602 E Sherman Ave',t:'Neighborhood spot at the east end of Sherman.',tags:['Casual']},
+        {n:'Anthony’s at Coeur d’Alene',m:'1926 W Riverstone Dr · daily 11:30 AM–9 PM',t:'Northwest seafood with a deck on Riverstone Pond. Reservations recommended.',l:'https://anthonys.com/?p=789',tags:['Send-off']},
+        {n:'Angelo’s Ristorante',m:'846 N 4th St · 208-765-2850',t:'Italian made from scratch, from pasta to steaks. Reservations recommended.',tags:['Send-off','Book ahead']},
+        {n:'Boiada Brazilian Grill',m:'Coeur d’Alene',t:'All-you-can-eat rodizio: meats carved at the table plus a market table. A lot of food after a river day.',tags:['Send-off']}]}
+    ],note:'None of these picks depends on its bar. I left out two well-reviewed places on purpose: Candle in the Woods, which is built around wine pairings, and River & Rye, which is 21 and over.'}
+  };
+  var curBTab='raft';
+  function cardHTML(c,withPrice){
+    return '<div class="bcard"><div class="meta">'+esc(c.m||'')+'</div><h4>'+esc(c.n)+'</h4>'+(withPrice&&c.p?'<div class="price">'+esc(c.p)+'</div>':'')+'<p>'+esc(c.t)+'</p>'+
+      (c.tags?'<div class="chipline">'+c.tags.map(function(t){return '<span class="mini'+(t==='NA drinks'?' na':'')+'">'+esc(t)+'</span>';}).join('')+'</div>':'')+
+      (c.l?'<a href="'+esc(c.l)+'">Website →</a>':'')+'</div>';
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function renderBook(){
+    document.querySelectorAll('[data-btab]').forEach(function(b){b.setAttribute('aria-selected',b.dataset.btab===curBTab);});
+    var B=BOOK[curBTab], h='<p class="small muted" style="margin-bottom:12px;max-width:72ch">'+esc(B.intro)+'</p>';
+    if(B.cards) h+='<div class="cards">'+B.cards.map(function(c){return cardHTML(c,true);}).join('')+'</div>';
+    if(B.groups) B.groups.forEach(function(g){h+='<div class="subh">'+esc(g.h)+'</div><div class="cards">'+g.cards.map(function(c){return cardHTML(c,false);}).join('')+'</div>';});
+    if(B.note) h+='<p class="small muted" style="margin-top:12px">'+esc(B.note)+'</p>';
+    document.getElementById('bookPanel').innerHTML=h;
+  }
+  document.querySelectorAll('[data-btab]').forEach(function(b){b.addEventListener('click',function(){curBTab=b.dataset.btab;renderBook();});});
+
+
+  // ---------- Backup plans ----------
+  (function(){
+    var P=[
+      {h:'Wildfire smoke',w:'Most likely in August',l:['Check air quality on AirNow each morning.','On a bad air day, skip Scotchman. Mineral Ridge and the lake are easier on the lungs.','ROW says its trips generally run unless an agency closes the river for wildfire.','Move the hard hike to the clearest day in the forecast.']},
+      {h:'Heat',w:'July and August afternoons',l:['Start early. Scotchman’s lower half is in full sun.','Switch to Stevens Lakes: more shade, a creek and two lakes to jump in.','Save the afternoons for the lake.']},
+      {h:'Thunderstorms',w:'Occasional summer afternoons',l:['Hold to the 1:00 PM turnaround on Scotchman. The top has no shelter.','Get off the water when you hear thunder.','If only one day looks stormy, ask ROW about moving the river day.']},
+      {h:'River trip full or cancelled',w:'Boats hold 7 and fill in peak weeks',l:['Ask ROW about the day before or after.','Take the Spokane River float instead.','Or ride the Hiawatha on Day 3 and keep the lake morning for Day 4.']},
+      {h:'Rain all day',w:'Rare in July, the driest month',l:['Drive to Wallace, a compact historic mining town an hour east on I-90.','Long brunch at Ten/6, then the scenic cruise if it is running.','The Hiawatha still works in drizzle. You get wet in the tunnels either way.']},
+      {h:'Someone needs a rest day',w:'Sore legs after the hike',l:['Trade the full river day for the half-day Spokane float.','Take the 90-minute scenic cruise.','Beach, Hudson’s, repeat.']}
+    ];
+    document.getElementById('plans').innerHTML=P.map(function(p){return '<div class="plan"><h4>'+esc(p.h)+'</h4><div class="when">'+esc(p.w)+'</div><ul>'+p.l.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul></div>';}).join('');
+  })();
+
+  // ---------- Crew and ledger ----------
+  function crewN(){return S.crew.length>=2?S.crew.length:S.n;}
+  function renderCrew(){
+    var ul=document.getElementById('people');ul.innerHTML='';
+    if(!S.crew.length){ul.innerHTML='<li class="empty">No one added yet. Start with yourself.</li>';}
+    S.crew.forEach(function(name,i){var li=document.createElement('li');li.className='person';li.innerHTML='<span></span><button type="button" aria-label="Remove">×</button>';li.querySelector('span').textContent=name;
+      li.querySelector('button').addEventListener('click',function(){if(S.expenses.some(function(e){return e.who===name;})){alert2(name+' has logged payments. Remove those first.');return;}S.crew.splice(i,1);save();renderAll();});ul.appendChild(li);});
+    var sel=document.getElementById('expWho');sel.innerHTML=S.crew.map(function(n){return '<option>'+esc(n)+'</option>';}).join('')||'<option value="">Add crew first</option>';
+    var tb=document.getElementById('ledger');tb.innerHTML='';
+    if(!S.expenses.length){tb.innerHTML='<tr><td colspan="4" class="empty">Nothing logged yet.</td></tr>';}
+    S.expenses.forEach(function(e,i){var tr=document.createElement('tr');tr.innerHTML='<td></td><td></td><td class="amt"></td><td style="text-align:right"><button type="button" aria-label="Delete">×</button></td>';
+      tr.children[0].textContent=e.who;tr.children[1].textContent=e.what;tr.children[2].textContent=fmt(e.amt);
+      tr.querySelector('button').addEventListener('click',function(){S.expenses.splice(i,1);save();renderAll();});tb.appendChild(tr);});
+    var bal=document.getElementById('balances'),st=document.getElementById('settle');bal.innerHTML='';st.innerHTML='';
+    if(S.crew.length<2||!S.expenses.length){return;}
+    var total=S.expenses.reduce(function(a,e){return a+e.amt;},0),share=total/S.crew.length;
+    var net=S.crew.map(function(n){var paid=S.expenses.filter(function(e){return e.who===n;}).reduce(function(a,e){return a+e.amt;},0);return {n:n,paid:paid,net:paid-share};});
+    bal.innerHTML='<div class="small muted">'+fmt(total)+' logged · '+fmt(share)+' each</div>'+net.map(function(x){return '<div class="balrow"><span>'+esc(x.n)+' <span class="muted small">paid '+fmt(x.paid)+'</span></span><b class="'+(x.net>=0?'pos':'neg')+'">'+(x.net>=0?'gets back ':'owes ')+fmt(Math.abs(x.net))+'</b></div>';}).join('');
+    var cred=net.filter(function(x){return x.net>0.5;}).map(function(x){return {n:x.n,v:x.net};}).sort(function(a,b){return b.v-a.v;});
+    var debt=net.filter(function(x){return x.net<-0.5;}).map(function(x){return {n:x.n,v:-x.net};}).sort(function(a,b){return b.v-a.v;});
+    var out=[];var i=0,j=0;while(i<debt.length&&j<cred.length){var v=Math.min(debt[i].v,cred[j].v);out.push(debt[i].n+' pays '+cred[j].n+' '+fmt(v));debt[i].v-=v;cred[j].v-=v;if(debt[i].v<0.5)i++;if(cred[j].v<0.5)j++;}
+    st.innerHTML=out.length?out.map(function(x){return '<li>'+esc(x)+'</li>';}).join(''):'<li>Everyone is square.</li>';
+  }
+  function alert2(msg){var t=document.getElementById('crewLede');t.textContent=msg;setTimeout(function(){t.textContent='Add each guy, log what each person pays for, and the page works out who owes whom. Split evenly across the crew.';},4000);}
+  document.getElementById('crewForm').addEventListener('submit',function(e){e.preventDefault();var inp=document.getElementById('crewName');var v=inp.value.trim();if(!v)return;if(S.crew.indexOf(v)>=0){alert2(v+' is already on the list.');return;}if(S.crew.length>=12)return;S.crew.push(v);S.n=Math.max(2,S.crew.length);inp.value='';save();renderAll();});
+  document.getElementById('expForm').addEventListener('submit',function(e){e.preventDefault();var who=document.getElementById('expWho').value,what=document.getElementById('expWhat').value.trim(),amt=parseFloat(document.getElementById('expAmt').value);
+    if(!who||!what||!(amt>0))return;S.expenses.push({who:who,what:what,amt:Math.round(amt*100)/100});document.getElementById('expWhat').value='';document.getElementById('expAmt').value='';save();renderAll();});
+  function syncInputs(){
+    document.getElementById('fStart').value=S.start;
+    ['fFlight','fTax','fCar','fFood'].forEach(function(id){var k={fFlight:'flight',fTax:'tax',fCar:'car',fFood:'food'}[id];var e=document.getElementById(id);if(document.activeElement!==e)e.value=S[k];});
+  }
+
+
+  function renderAll(){clean();renderTabs();renderDay();renderHikes();renderRivers();renderLast();renderDinners();renderDates();renderCrew();budget();drawMap();}
+
+  // ---------- Booking ----------
+  (function(){
+    var items=[["4–6 months out", "Lock dates and headcount, then book the house. July and August are peak season on the lake."], ["4–6 months out", "Reserve the SUV at Spokane airport. July is the most expensive month there."], ["3–4 months out", "Book flights. Every Austin routing connects once. Aim to land by early afternoon on Day 1."], ["2–3 months out", "Book the Clark Fork trip with ROW. Rafts hold 7 guests, so ask to have your group in one boat."], ["1 month out", "Reserve Hiawatha passes, shuttle and bikes, and a table at Ten/6 if you pick the lake morning."], ["When booking opens", "Make dinner reservations, starting with Night 1 and the send-off."], ["Week of", "Check AirNow for smoke, the forecast for heat, and a recent trail report for your hike."], ["Day 1", "Get cash for Hudson’s. Buy trail food and fill every water bottle."]];
+    var saved=read('cda1-book')||{};var ul=document.getElementById('bookList');
+    items.forEach(function(it,i){var li=document.createElement('li');li.innerHTML='<span class="when"></span><label><input type="checkbox" id="bk'+i+'"><span></span></label>';
+      li.querySelector('.when').textContent=it[0];li.querySelector('label span').textContent=it[1];
+      var cb=li.querySelector('input');cb.checked=!!saved[i];cb.addEventListener('change',function(){saved[i]=cb.checked;store('cda1-book',saved);});ul.appendChild(li);});
+  })();
+  // ---------- Season ----------
+  (function(){
+    var box=document.getElementById('season');var months=['May','Jun','Jul','Aug','Sep','Oct'];
+    var rows=[["Clark Fork", [0, 0, 3, 3, 0, 0], ["Closed", "Closed", "From Jul 1", "To Aug 29", "Closed", "Closed"]], ["High trails", [1, 1, 2, 3, 3, 1], ["Snow", "Snow", "Melting", "Best", "Cool", "Snow risk"]], ["Hiawatha", [2, 3, 3, 3, 2, 0], ["Late May", "Open", "Open", "Open", "To mid-Sep", "Closed"]], ["Lake swims", [1, 2, 3, 3, 2, 1], ["Cold", "Cool", "Warm", "Warm", "Cooling", "Cold"]]];
+    var h='<div></div>'+months.map(function(m){return '<div class="m">'+m+'</div>';}).join('');
+    rows.forEach(function(r){h+='<div class="lab">'+r[0]+'</div>'+r[1].map(function(v,i){return '<div class="cell c'+v+'">'+r[2][i]+'</div>';}).join('');});
+    box.innerHTML=h;
+  })();
+  // ---------- Pack list ----------
+  (function(){
+    var items=["Water bottles or a bladder, 3 liters each", "Trekking poles for Scotchman", "Broken-in hiking boots", "Sun hoodie, hat and sunscreen", "Swimsuit and a quick-dry towel", "Sandals with heel straps for the river", "Quick-dry shorts and shirt for the river", "Light jacket for the Hiawatha tunnel", "Bike light or headlamp", "Rain shell", "Cash for Hudson’s", "Offline maps for both trail days", "Bear spray for the hike days", "Zip bag or dry bag for your phone", "Blister tape and a small first-aid kit", "Sunglasses with a strap"];
+    var saved=read('cda1-pack')||{};var ul=document.getElementById('checklist');
+    items.forEach(function(it,i){var li=document.createElement('li');li.innerHTML='<label><input type="checkbox" id="pk'+i+'"><span></span></label>';li.querySelector('span').textContent=it;
+      var cb=li.querySelector('input');cb.checked=!!saved[i];cb.addEventListener('change',function(){saved[i]=cb.checked;store('cda1-pack',saved);});ul.appendChild(li);});
+  })();
+  // ---------- Copy ----------
+  function planText(){
+    var out=['COEUR D’ALENE GUYS WEEKEND',shortDate(0)+' to '+shortDate(3)+(S.crew.length?' · '+S.crew.join(', '):''),''];
+    days().forEach(function(d,i){out.push(d.label.toUpperCase()+' ('+shortDate(i)+'): '+d.tag);d.items.forEach(function(it){out.push('  '+it.t+'  '+it.name+(it.cost?' ('+it.cost+')':''));});out.push('');});
+    var h=HIKES[S.hike];out.push('Hike: '+h.name+', '+h.mi+' mi, '+h.gain.toLocaleString()+' ft gain');
+    out.push('River: '+RIVERS[S.river].name+', '+fmt(RIVERS[S.river].price)+' per person');out.push('Last day: '+LAST[S.last].name);
+    out.push('Estimated cost: '+document.getElementById('ppTotal').textContent+' per person for '+crewN()+' guys');
+    return out.join('\n');
+  }
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    var txt=planText(),toast=document.getElementById('toast'),fb=document.getElementById('fallback');
+    function fallback(){fb.style.display='block';fb.value=txt;fb.focus();fb.select();toast.textContent='Copy the text below.';}
+    try{navigator.clipboard.writeText(txt).then(function(){toast.textContent='Copied. Paste it in the group chat.';fb.style.display='none';},fallback);}catch(e){fallback();}
+  });
+  document.getElementById('resetBtn').addEventListener('click',function(){var keep={crew:S.crew,expenses:S.expenses,start:S.start};S=Object.assign({},DEF,keep);save();syncInputs();renderAll();document.getElementById('toast').textContent='Picks reset. Crew, payments and dates kept.';});
+
+  syncInputs();renderBook();renderAll();startSync();
+})();
+</script>
+</body>
+</html>
+
